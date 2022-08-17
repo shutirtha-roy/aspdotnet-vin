@@ -71,7 +71,76 @@
                     <asp:TextBox ID="txtContactPersonEmail" runat="server" Width="450px"></asp:TextBox>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label8" runat="server" Text="Phone Number" Width="450px"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtPhoneNumber" runat="server" Width="450px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label9" runat="server" Text="Fax" Width="450px"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtFax" runat="server" Width="450px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label10" runat="server" Text="Email" Width="450px"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="textEmail" runat="server" Width="450px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label11" runat="server" Text="URL" Width="450px"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtURL" runat="server" Width="450px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label12" runat="server" Text="TIN" Width="450px"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtTin" runat="server" Width="450px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label13" runat="server" Text="Reg No" Width="450px"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtRegNo" runat="server" Width="450px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label14" runat="server" Text="Vat No" Width="450px"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtVatNo" runat="server" Width="450px"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <asp:Label ID="Label15" runat="server" Text="Insurance" Width="450px"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="txtInsurance" runat="server" Width="450px"></asp:TextBox>
+                </td>
+            </tr>
+
+
         </table>
+
+        <asp:Button class="bg-primary h4" ID="btnSave" runat="server" Text="Save" />
+
     </form>
 </body>
 </html>
