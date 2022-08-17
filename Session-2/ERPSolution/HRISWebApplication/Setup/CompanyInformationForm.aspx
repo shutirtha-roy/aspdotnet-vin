@@ -139,7 +139,7 @@
 
         </table>
 
-        <asp:Button class="bg-primary h4" ID="btnSave" runat="server" Text="Save" />
+        <asp:Button class="bg-primary h4" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
 
     </form>
 </body>
