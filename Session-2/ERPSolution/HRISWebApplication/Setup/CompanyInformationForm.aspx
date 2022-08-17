@@ -92,7 +92,7 @@
                     <asp:Label ID="Label10" runat="server" Text="Email" Width="450px"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="textEmail" runat="server" Width="450px"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" Width="450px"></asp:TextBox>
                 </td>
             </tr>
             <tr>
