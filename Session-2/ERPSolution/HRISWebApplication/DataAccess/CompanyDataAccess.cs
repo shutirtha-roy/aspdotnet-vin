@@ -14,7 +14,7 @@ namespace HRISWebApplication.DataAccess
 
         public CompanyDataAccess()
         {
-            _conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringCompany"].ConnectionString);
+            _conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringHRIS"].ConnectionString);
             _conn.Open();
         }
         public void Save(IDictionary<string, string> companyDetails)
