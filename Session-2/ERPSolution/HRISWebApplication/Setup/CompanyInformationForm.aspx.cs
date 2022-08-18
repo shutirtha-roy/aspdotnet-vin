@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HRISWebApplication.DataAccess;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,8 @@ namespace HRISWebApplication.Setup
                 { "insurance", txtInsurance.Text }
             };
 
-            throw new NotImplementedException();
+            CompanyDataAccess companyDataAccess = new CompanyDataAccess();
+            companyDataAccess.Save(companyDetails);
         }
     }
 }
