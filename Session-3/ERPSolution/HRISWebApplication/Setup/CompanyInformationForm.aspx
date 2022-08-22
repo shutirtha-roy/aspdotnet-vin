@@ -13,8 +13,8 @@
 <body>
     <h1 class="bg-primary text-center">COMPANY SETUP</h1>
 
-    <form id="form1" runat="server" class="text-center">
-        <table style="width: 100%;">
+    <form id="form1" runat="server" class="text-left container">
+        <table style="width: 90%;">
             <tr>
                 <td>
                     <asp:Label ID="Label1" runat="server" Text="Company ID" Width="450px"></asp:Label>
@@ -135,12 +135,45 @@
                     <asp:TextBox ID="txtInsurance" runat="server" Width="450px"></asp:TextBox>
                 </td>
             </tr>
-
-
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    <asp:Button class="bg-primary h4" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                    
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
         </table>
 
-        <asp:Button class="bg-primary h4" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
-
+        <asp:GridView ID="GridView1" class="text-center" runat="server">
+        </asp:GridView>
     </form>
+
+    
 </body>
 </html>
