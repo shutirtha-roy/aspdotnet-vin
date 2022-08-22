@@ -17,6 +17,16 @@ namespace HRISWebApplication.DataAccess
             _conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringHRIS"].ConnectionString);
             _conn.Open();
         }
+        public SqlDataReader SaveAllCompanyInformation()
+        {
+            string sqlQuery = "SELECT [CompanyId], [CompanyName], " +
+                "[Address1], [Address2], [Address3], [ContPer1], [ContPer2], [Phone1]" +
+                ", [Fax1], [Email1] ,[Url1] ,[TIN],[RegNo] ,[VATNo] ,[Insurance1] FROM [dbo].[Hrms_Company_Master]";
+            SqlCommand cmd = new SqlCommand(sqlQuery, _conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            return reader;
+        }
+
         public void Save(IDictionary<string, string> companyDetails)
         {
             string sqlQuery = $"INSERT INTO [dbo].[Hrms_Company_Master] " +
