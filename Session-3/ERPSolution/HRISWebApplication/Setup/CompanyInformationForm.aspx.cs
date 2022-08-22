@@ -2,6 +2,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,14 +14,28 @@ namespace HRISWebApplication.Setup
 {
     public partial class CompanyInformationForm : System.Web.UI.Page
     {
+        private SqlConnection _conn;
+        private CompanyDataAccess companyDataAccess;
+        public CompanyInformationForm()
+        {
+            companyDataAccess = new CompanyDataAccess();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ShowCompanyInformation();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
             SaveCompanyInformation();
+        }
+
+        private void ShowCompanyInformation()
+        {
+            SqlDataReader reader = companyDataAccess.SaveAllCompanyInformation();
+            GridView1.DataSource = reader;
+            GridView1.DataBind();
         }
 
         private void SaveCompanyInformation()
@@ -42,7 +59,7 @@ namespace HRISWebApplication.Setup
                 { "insurance", txtInsurance.Text }
             };
 
-            CompanyDataAccess companyDataAccess = new CompanyDataAccess();
+            
             companyDataAccess.Save(companyDetails);
         }
     }
