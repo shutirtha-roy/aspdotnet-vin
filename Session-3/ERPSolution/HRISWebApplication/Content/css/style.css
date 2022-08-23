@@ -1,0 +1,36 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+
+/*************FORM***********/
+.form-title {
+    margin-top: 0;
+    margin-bottom: 5vh;
+}
+
+.text-large {
+    font-size: 150%;
+}
+
+.form-width {
+    width: 100%;
+}
+
+input {
+    max-width: 520px;
+}
+
+.table-font {
+    font-size: 11.5px;
+}
+
+.company-information th {
+    background-color: #2596be;
+    color: white;
+}
