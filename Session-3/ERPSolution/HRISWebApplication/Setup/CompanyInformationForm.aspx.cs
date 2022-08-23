@@ -14,7 +14,6 @@ namespace HRISWebApplication.Setup
 {
     public partial class CompanyInformationForm : System.Web.UI.Page
     {
-        private SqlConnection _conn;
         private CompanyDataAccess companyDataAccess;
         public CompanyInformationForm()
         {
@@ -36,6 +35,7 @@ namespace HRISWebApplication.Setup
             SqlDataReader reader = companyDataAccess.SaveAllCompanyInformation();
             GridView1.DataSource = reader;
             GridView1.DataBind();
+            reader.Close();
         }
 
         private void SaveCompanyInformation()
