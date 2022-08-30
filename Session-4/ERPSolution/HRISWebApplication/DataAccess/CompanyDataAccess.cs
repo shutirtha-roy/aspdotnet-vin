@@ -15,11 +15,11 @@ namespace HRISWebApplication.DataAccess
         public CompanyDataAccess()
         {
             _conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringHRIS"].ConnectionString);
-            //_conn.Open();
+            _conn.Open();
         }
         public SqlDataReader SaveAllCompanyInformation()
         {
-            _conn.Open();
+            
             string sqlQuery = "SELECT [CompanyId], [CompanyName], " +
                 "[Address1], [Address2], [Address3], [ContPer1], [ContPer2], [Phone1]" +
                 ", [Fax1], [Email1] ,[Url1] ,[TIN],[RegNo] ,[VATNo] ,[Insurance1] FROM [dbo].[Hrms_Company_Master]";
@@ -46,7 +46,14 @@ namespace HRISWebApplication.DataAccess
 
             SqlCommand command = new SqlCommand(sqlQuery, _conn);
             command.ExecuteNonQuery();
-            _conn.Close();
+            //_conn.Close();
+        }
+
+        public void DeleteRow(string companyId)
+        {
+            string sqlQuery = $"DELETE FROM [dbo].[Hrms_Company_Master] WHERE CompanyId='{companyId}'";
+            SqlCommand command = new SqlCommand(sqlQuery, _conn);
+            command.ExecuteNonQuery();
         }
     }
 }
