@@ -34,8 +34,8 @@ namespace HRISWebApplication.Setup
         private void ShowCompanyInformation()
         {
             SqlDataReader reader = companyDataAccess.SaveAllCompanyInformation();
-            GridView1.DataSource = reader;
-            GridView1.DataBind();
+            GridCompany.DataSource = reader;
+            GridCompany.DataBind();
             reader.Close();
         }
 
@@ -62,6 +62,19 @@ namespace HRISWebApplication.Setup
 
             
             companyDataAccess.Save(companyDetails);
+        }
+
+        protected void GridCompany_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int index = e.RowIndex;
+            string cid = GridCompany.Rows[index].Cells[1].Text;
+            companyDataAccess.DeleteRow(cid);
+            ShowCompanyInformation();
+        }
+
+        protected void GridCompany_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
         }
     }
 }
