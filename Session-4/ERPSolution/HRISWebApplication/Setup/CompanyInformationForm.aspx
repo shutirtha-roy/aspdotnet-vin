@@ -173,7 +173,10 @@
             </tr>
         </table>
 
-        <asp:GridView ID="GridView1" class="table text-center table-font company-information" runat="server">
+        <asp:GridView ID="GridCompany" class="table text-center table-font company-information" runat="server" OnRowDeleting="GridCompany_RowDeleting" OnRowCommand="GridCompany_RowCommand">
+            <Columns>
+                <asp:CommandField ShowDeleteButton="True" />
+            </Columns>
         </asp:GridView>
     </form>
 
