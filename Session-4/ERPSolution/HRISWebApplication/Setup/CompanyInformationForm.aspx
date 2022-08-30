@@ -142,7 +142,7 @@
                 <td>
                     &nbsp;
                 </td>
-                <td>
+                <td class="text-center">
                     <asp:Button CssClass="btn btn-lg bg-primary h4" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
                 </td>
             </tr>
