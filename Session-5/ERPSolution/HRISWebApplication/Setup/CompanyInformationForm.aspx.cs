@@ -29,6 +29,7 @@ namespace HRISWebApplication.Setup
         {
             SaveCompanyInformation();
             ShowCompanyInformation();
+            ClearAllFormControl();
         }
 
         private void ShowCompanyInformation()
@@ -38,6 +39,24 @@ namespace HRISWebApplication.Setup
             GridCompany.DataBind();
         }
 
+        private void ClearAllFormControl()
+        {
+            txtCompanyID.Text = string.Empty;
+            txtCompanyName.Text = string.Empty;
+            txtAddress1.Text = string.Empty;
+            txtAddress2.Text = string.Empty;
+            txtAddress3.Text = string.Empty;
+            txtContactPersonAddress.Text = string.Empty;
+            txtContactPersonEmail.Text = string.Empty;
+            txtPhoneNumber.Text = string.Empty;
+            txtFax.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtURL.Text = string.Empty;
+            txtTin.Text = string.Empty;
+            txtRegNo.Text = string.Empty;
+            txtVatNo.Text = string.Empty;
+            txtInsurance.Text = string.Empty;
+        }
         private void SaveCompanyInformation()
         {
             IDictionary<string, string> companyDetails = new Dictionary<string, string>()
