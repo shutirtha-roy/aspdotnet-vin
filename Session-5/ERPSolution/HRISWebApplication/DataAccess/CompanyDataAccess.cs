@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 
 namespace HRISWebApplication.DataAccess
 {
@@ -49,7 +50,17 @@ namespace HRISWebApplication.DataAccess
 
 
             SqlCommand command = new SqlCommand(sqlQuery, _conn);
-            command.ExecuteNonQuery();
+
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                string primaryKeyExceptionMessage = "Duplicate Primary Key Entered";
+                HttpContext.Current.Response.Write($"<script>alert('{primaryKeyExceptionMessage}')</script>"); 
+            }
+
             _conn.Close();
         }
 
