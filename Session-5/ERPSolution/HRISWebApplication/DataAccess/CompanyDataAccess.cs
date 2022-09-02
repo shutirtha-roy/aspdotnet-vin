@@ -16,11 +16,11 @@ namespace HRISWebApplication.DataAccess
         public CompanyDataAccess()
         {
             _conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringHRIS"].ConnectionString);
-            _conn.Open();
+            
         }
         public DataTable GetAllCompanyInformation()
         {
-            
+            _conn.Open();
             string sqlQuery = @"SELECT [CompanyId], [CompanyName], 
                 [Address1], [Address2], [Address3], [ContPer1], [ContPer2], [Phone1]
                 , [Fax1], [Email1] ,[Url1] ,[TIN],[RegNo] ,[VATNo] ,[Insurance1] FROM [dbo].[Hrms_Company_Master]";
@@ -28,13 +28,14 @@ namespace HRISWebApplication.DataAccess
             SqlDataReader reader = cmd.ExecuteReader();
             DataTable dataTable = new DataTable();
             dataTable.Load(reader);
+            _conn.Close();
             return dataTable;
         }
 
         public void Save(IDictionary<string, string> companyDetails)
         {
-            
 
+            _conn.Open();
             string sqlQuery = $"INSERT INTO [dbo].[Hrms_Company_Master] " +
                 $"([CompanyName] ,[CompanyId], [Address1] ,[Address2], [Address3],[ContPer1], [ContPer2], [Phone1]" +
                 $", [Fax1], [Email1] ,[Url1] ,[TIN],[RegNo] ,[VATNo] ,[Insurance1])" +
@@ -49,14 +50,16 @@ namespace HRISWebApplication.DataAccess
 
             SqlCommand command = new SqlCommand(sqlQuery, _conn);
             command.ExecuteNonQuery();
-            //_conn.Close();
+            _conn.Close();
         }
 
         public void DeleteRow(string companyId)
         {
+            _conn.Open();
             string sqlQuery = $"DELETE FROM [dbo].[Hrms_Company_Master] WHERE CompanyId='{companyId}'";
             SqlCommand command = new SqlCommand(sqlQuery, _conn);
             command.ExecuteNonQuery();
+            _conn.Close();
         }
     }
 }
