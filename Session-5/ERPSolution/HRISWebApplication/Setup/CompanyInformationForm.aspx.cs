@@ -27,9 +27,17 @@ namespace HRISWebApplication.Setup
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            SaveCompanyInformation();
-            ShowCompanyInformation();
-            ClearAllFormControl();
+            if(btnSave.Text.Equals("Save"))
+            {
+                SaveCompanyInformation();
+                ShowCompanyInformation();
+                ClearAllFormControl();
+            }
+            else if (btnSave.Text.Equals("Update"))
+            {
+                btnSave.Text = "Save";
+            }
+
         }
 
         private void ShowCompanyInformation()
@@ -84,15 +92,37 @@ namespace HRISWebApplication.Setup
 
         protected void GridCompany_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            int index = e.RowIndex;
-            string cid = GridCompany.Rows[index].Cells[1].Text;
-            companyDataAccess.DeleteRow(cid);
-            ShowCompanyInformation();
         }
 
         protected void GridCompany_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int index = int.Parse(e.CommandArgument.ToString());
 
+            if (e.CommandName.Equals("Select"))
+            {
+                txtCompanyID.Text = GridCompany.Rows[index].Cells[2].Text;
+                txtCompanyName.Text = GridCompany.Rows[index].Cells[3].Text;
+                txtAddress1.Text = GridCompany.Rows[index].Cells[4].Text;
+                txtAddress2.Text = GridCompany.Rows[index].Cells[5].Text;
+                txtAddress3.Text = GridCompany.Rows[index].Cells[6].Text;
+                txtContactPersonAddress.Text = GridCompany.Rows[index].Cells[7].Text;
+                txtContactPersonEmail.Text = GridCompany.Rows[index].Cells[8].Text;
+                txtPhoneNumber.Text = GridCompany.Rows[index].Cells[9].Text;
+                txtFax.Text = GridCompany.Rows[index].Cells[10].Text;
+                txtEmail.Text = GridCompany.Rows[index].Cells[11].Text;
+                txtURL.Text = GridCompany.Rows[index].Cells[12].Text;
+                txtTin.Text = GridCompany.Rows[index].Cells[13].Text;
+                txtRegNo.Text = GridCompany.Rows[index].Cells[14].Text;
+                txtVatNo.Text = GridCompany.Rows[index].Cells[15].Text;
+                txtInsurance.Text = GridCompany.Rows[index].Cells[16].Text;
+                btnSave.Text = "Update";
+            }
+            else if (e.CommandName.Equals("Delete"))
+            {
+                string cid = GridCompany.Rows[index].Cells[2].Text;
+                companyDataAccess.DeleteRow(cid);
+                ShowCompanyInformation();
+            }
         }
     }
 }
