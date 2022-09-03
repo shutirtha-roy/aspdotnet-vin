@@ -38,7 +38,14 @@ namespace HRISWebApplication.DataAccess
 
             _conn.Open();
 
-            string sqlQuery = $"INSERT INTO [dbo].[Hrms_Company_Master] " +
+            if (companyDetails["companyId"] == "")
+            {
+                string primaryKeyExceptionMessage = "Empty Primary Key entered";
+                HttpContext.Current.Response.Write($"<script>alert('{primaryKeyExceptionMessage}')</script>");
+            }
+            else
+            {
+                string sqlQuery = $"INSERT INTO [dbo].[Hrms_Company_Master] " +
                 $"([CompanyName] ,[CompanyId], [Address1] ,[Address2], [Address3],[ContPer1], [ContPer2], [Phone1]" +
                 $", [Fax1], [Email1] ,[Url1] ,[TIN],[RegNo] ,[VATNo] ,[Insurance1])" +
                 $"VALUES " +
@@ -49,29 +56,17 @@ namespace HRISWebApplication.DataAccess
                 $"'{companyDetails["fax"]}', '{companyDetails["email"]}', '{companyDetails["url"]}', '{companyDetails["tin"]}'," +
                 $"'{companyDetails["regNo"]}', '{companyDetails["vatNo"]}', '{companyDetails["insurance"]}')";
 
+                SqlCommand command = new SqlCommand(sqlQuery, _conn);
 
-            SqlCommand command = new SqlCommand(sqlQuery, _conn);
-
-            try
-            {
-                if (companyDetails["companyId"] != "")
-                    command.ExecuteNonQuery();
-                else
-                    throw new Exception();
-            }
-            catch(Exception ex)
-            {
-                if (companyDetails["companyId"] == "")
+                try
                 {
-                    string primaryKeyExceptionMessage = "Empty Primary Key entered";
-                    HttpContext.Current.Response.Write($"<script>alert('{primaryKeyExceptionMessage}')</script>");
+                    command.ExecuteNonQuery();
                 }
-                else
+                catch (Exception ex)
                 {
                     string primaryKeyExceptionMessage = "Duplicate Primary Key Entered";
                     HttpContext.Current.Response.Write($"<script>alert('{primaryKeyExceptionMessage}')</script>");
                 }
-                
             }
 
             _conn.Close();
