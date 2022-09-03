@@ -125,6 +125,7 @@ namespace HRISWebApplication.Setup
             if (e.CommandName.Equals("Select"))
             {
                 //string test = GridCompany.Rows[index].Cells[2].Text.Equals("&nbsp;") ? "" : GridCompany.Rows[index].Cells[2].Text;
+
                 txtCompanyID.Text = GridCompany.Rows[index].Cells[2].Text;
                 txtCompanyName.Text = GridCompany.Rows[index].Cells[3].Text;
                 txtAddress1.Text = GridCompany.Rows[index].Cells[4].Text;
