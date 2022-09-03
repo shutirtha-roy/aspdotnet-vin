@@ -29,18 +29,17 @@ namespace HRISWebApplication.Setup
         {
             if(btnSave.Text.Equals("Save"))
             {
+                txtCompanyID.Enabled = true;
                 SaveCompanyInformation();
-                ShowCompanyInformation();
-                ClearAllFormControl();
             }
             else if (btnSave.Text.Equals("Update"))
             {
                 UpdateCompanyInformation();
+                txtCompanyID.Enabled = true;
                 btnSave.Text = "Save";
-                ShowCompanyInformation();
-                ClearAllFormControl();
             }
-
+            ShowCompanyInformation();
+            ClearAllFormControl();
         }
 
         private void ShowCompanyInformation()
@@ -139,6 +138,7 @@ namespace HRISWebApplication.Setup
                 txtRegNo.Text = GridCompany.Rows[index].Cells[14].Text.Equals("&nbsp;") ? "" : GridCompany.Rows[index].Cells[14].Text;
                 txtVatNo.Text = GridCompany.Rows[index].Cells[15].Text.Equals("&nbsp;") ? "" : GridCompany.Rows[index].Cells[15].Text;
                 txtInsurance.Text = GridCompany.Rows[index].Cells[16].Text.Equals("&nbsp;") ? "" : GridCompany.Rows[index].Cells[16].Text;
+                txtCompanyID.Enabled = false;
                 btnSave.Text = "Update";
             }
             else if (e.CommandName.Equals("Delete"))
