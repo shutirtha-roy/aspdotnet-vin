@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="bg-primary text-center">
+    <div class="text-center">
         <h1 class="form-title">COMPANY SETUP</h1>
     </div>
     
