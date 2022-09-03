@@ -35,7 +35,10 @@ namespace HRISWebApplication.Setup
             }
             else if (btnSave.Text.Equals("Update"))
             {
+                UpdateCompanyInformation();
                 btnSave.Text = "Save";
+                ShowCompanyInformation();
+                ClearAllFormControl();
             }
 
         }
@@ -85,9 +88,30 @@ namespace HRISWebApplication.Setup
                 { "vatNo", txtVatNo.Text },
                 { "insurance", txtInsurance.Text }
             };
-
-            
             companyDataAccess.Save(companyDetails);
+        }
+        private void UpdateCompanyInformation()
+        {
+            IDictionary<string, string> companyDetails = new Dictionary<string, string>()
+            {
+                { "companyId", txtCompanyID.Text },
+                { "companyName", txtCompanyName.Text },
+                { "address1", txtAddress1.Text },
+                { "address2", txtAddress2.Text },
+                { "address3", txtAddress3.Text },
+                { "contactPersonAddress", txtContactPersonAddress.Text },
+                { "contactPersonEmail", txtContactPersonEmail.Text },
+                { "contactPersonPhoneNo", txtPhoneNumber.Text },
+                { "fax", txtFax.Text },
+                { "email", txtEmail.Text },
+                { "url", txtURL.Text },
+                { "tin", txtTin.Text },
+                { "regNo", txtRegNo.Text },
+                { "vatNo", txtVatNo.Text },
+                { "insurance", txtInsurance.Text }
+            };
+
+            companyDataAccess.Update(companyDetails);
         }
 
         protected void GridCompany_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -100,6 +124,7 @@ namespace HRISWebApplication.Setup
 
             if (e.CommandName.Equals("Select"))
             {
+                //string test = GridCompany.Rows[index].Cells[2].Text.Equals("&nbsp;") ? "" : GridCompany.Rows[index].Cells[2].Text;
                 txtCompanyID.Text = GridCompany.Rows[index].Cells[2].Text;
                 txtCompanyName.Text = GridCompany.Rows[index].Cells[3].Text;
                 txtAddress1.Text = GridCompany.Rows[index].Cells[4].Text;
