@@ -176,6 +176,7 @@
         <asp:GridView ID="GridCompany" class="table text-center table-font company-information" runat="server" OnRowDeleting="GridCompany_RowDeleting" OnRowCommand="GridCompany_RowCommand">
             <Columns>
                 <asp:CommandField ShowDeleteButton="True" />
+                <asp:CommandField ShowSelectButton="True" />
             </Columns>
         </asp:GridView>
     </form>
