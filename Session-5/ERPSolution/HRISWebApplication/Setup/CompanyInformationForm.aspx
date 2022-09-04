@@ -126,14 +126,16 @@
             </div>
 
             <asp:Button CssClass="btn btn-primary btn-lg mb-5" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+            &nbsp;
+            <asp:Button CssClass="btn btn-info btn-lg mb-5" ID="btnClearForm" runat="server" Text="ClearForm" OnClick="btnClearForm_Click" />
         </div>
 
         
 
         <asp:GridView ID="GridCompany" class="table text-center table-font company-information mt-5 table-striped table-bordered" runat="server" OnRowDeleting="GridCompany_RowDeleting" OnRowCommand="GridCompany_RowCommand">
             <Columns>
-                <asp:CommandField ShowDeleteButton="True" />
-                <asp:CommandField ShowSelectButton="True" />
+                <asp:CommandField ControlStyle-CssClass="btn btn-danger" ShowDeleteButton="True" />
+                <asp:CommandField ControlStyle-CssClass="btn btn-info" ShowSelectButton="True" />
             </Columns>
         </asp:GridView>
 
