@@ -42,6 +42,12 @@ namespace HRISWebApplication.Setup
             ClearAllFormControl();
         }
 
+        protected void btnClearForm_Click(object sender, EventArgs e)
+        {
+            txtCompanyID.Enabled = true;
+            ClearAllFormControl();
+        }
+        
         private void ShowCompanyInformation()
         {
             DataTable dt = companyDataAccess.GetAllCompanyInformation();
