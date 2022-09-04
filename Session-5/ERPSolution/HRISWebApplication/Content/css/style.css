@@ -14,16 +14,9 @@
     font-size: 150%;
 }
 
-.form-width {
-    width: 100%;
-}
-
-input {
-    max-width: 520px;
-}
 
 .table-font {
-    font-size: 9.5px;
+    font-size: 8.5px;
     transform: scale(1, 1.3);
 }
 
@@ -32,19 +25,9 @@ input {
     color: white;
 }
 
-.company-input-form input {
-    height: 4.4vh;
-}
-
-
-
-#btnSave {
-    padding-bottom: 5vh;
-}
-
-#btnSave:hover{
-    transform: scale(1.05);
-    color: white;
+#btnSave #btnClearForm {
+    width: 9vw;
+    height: 6vh;
 }
 
 /***********TABLE**********/
