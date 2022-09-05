@@ -13,5 +13,20 @@ namespace HRISWebApplication.Setup
         {
 
         }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnClearForm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void GridCompanyDivision_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
     }
 }
