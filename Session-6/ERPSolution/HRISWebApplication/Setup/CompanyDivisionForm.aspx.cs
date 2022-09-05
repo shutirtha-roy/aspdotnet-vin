@@ -29,7 +29,8 @@ namespace HRISWebApplication.Setup
 
         protected void btnClearForm_Click(object sender, EventArgs e)
         {
-
+            txtLocationCode.Enabled = true;
+            ClearAllFormControl();
         }
 
         protected void GridCompanyDivision_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -42,6 +43,16 @@ namespace HRISWebApplication.Setup
             DataTable dt = _companyDataAccess.GetAllCompanyDivisionInformation();
             GridCompanyDivision.DataSource = dt;
             GridCompanyDivision.DataBind();
+        }
+
+        private void ClearAllFormControl()
+        {
+            txtLocationCode.Text = string.Empty;
+            txtLocationName.Text = string.Empty;
+            txtLocation.Text = string.Empty;
+            txtAddress1.Text = string.Empty;
+            txtAddress2.Text = string.Empty;
+            txtAddress3.Text = string.Empty;
         }
     }
 }
