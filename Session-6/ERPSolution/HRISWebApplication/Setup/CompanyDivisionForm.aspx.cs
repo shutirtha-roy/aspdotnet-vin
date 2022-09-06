@@ -64,7 +64,14 @@ namespace HRISWebApplication.Setup
 
         protected void GridCompanyDivision_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int index = int.Parse(e.CommandArgument.ToString());
 
+            if (e.CommandName.Equals("Delete"))
+            {
+                string cid = GridCompanyDivision.Rows[index].Cells[3].Text;
+                _companyDivisonDataAccess.DeleteRow(cid);
+                ShowCompanyDivisionInformation();
+            }
         }
 
         private void ShowCompanyDivisionInformation()
@@ -110,6 +117,11 @@ namespace HRISWebApplication.Setup
         protected void ddlCompanyDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
             CompanyId = ddlCompanyDivision.SelectedValue;
+        }
+
+        protected void GridCompanyDivision_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
         }
     }
 }
