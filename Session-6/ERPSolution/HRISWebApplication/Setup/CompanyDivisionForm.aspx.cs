@@ -72,6 +72,10 @@ namespace HRISWebApplication.Setup
                 _companyDivisonDataAccess.DeleteRow(cid);
                 ShowCompanyDivisionInformation();
             }
+            else if (e.CommandName.Equals("Select"))
+            {
+                ddlCompanyDivision.SelectedValue = GridCompanyDivision.Rows[index].Cells[2].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[2].Text;
+            }
         }
 
         private void ShowCompanyDivisionInformation()
