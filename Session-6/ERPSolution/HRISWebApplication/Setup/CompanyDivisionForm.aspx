@@ -20,11 +20,8 @@
         <div class="mx-auto text-center mb-5" style="width: 620px;">
             <div class="form-group row">
                 <asp:Label CssClass="col-sm-4 ml-4 col-form-label col-form-label-lg text-large" ID="Label1" runat="server" Text="Select Company"></asp:Label>
-                
-                <select class="custom-select">
-                    <asp:DropDownList CssClass="" ID="DropDownList1" runat="server">
-                    </asp:DropDownList>
-                </select>
+                <asp:DropDownList CssClass="" ID="ddlCompanyDivision" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCompanyDivision_SelectedIndexChanged">
+                </asp:DropDownList>
             </div>
 
             <div class="form-group row">
