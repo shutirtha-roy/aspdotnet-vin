@@ -72,10 +72,23 @@ namespace HRISWebApplication.DataAccess
             _conn.Close();
         }
 
-        internal void DeleteRow(string officeLocationCode)
+        public void DeleteRow(string officeLocationCode)
         {
             _conn.Open();
             string sqlQuery = $"DELETE FROM [dbo].[Hrms_Company_Division_Master] WHERE OfficeLocationCode='{officeLocationCode}'";
+            SqlCommand command = new SqlCommand(sqlQuery, _conn);
+            command.ExecuteNonQuery();
+            _conn.Close();
+        }
+
+        public void Update(IDictionary<string, string> companyDetails)
+        {
+            _conn.Open();
+            string sqlQuery = $@"UPDATE [dbo].[Hrms_Company_Division_Master] Set CompanyId = '{companyDetails["companyId"]}',
+                               OfficeLocationCode = '{companyDetails["officeLocationCode"]}', OfficeLocationName = '{companyDetails["officeLocationName"]}',
+                               Location = '{companyDetails["location"]}', Address1 = '{companyDetails["address1"]}', Address2 = '{companyDetails["address2"]}',
+                               Address3 = '{companyDetails["address3"]}' WHERE OfficeLocationCode = '{companyDetails["officeLocationCode"]}'";
+
             SqlCommand command = new SqlCommand(sqlQuery, _conn);
             command.ExecuteNonQuery();
             _conn.Close();
