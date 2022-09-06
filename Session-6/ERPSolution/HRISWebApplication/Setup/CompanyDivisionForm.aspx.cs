@@ -11,6 +11,7 @@ namespace HRISWebApplication.Setup
 {
     public partial class CompanyDivisionForm : System.Web.UI.Page
     {
+        public static string CompanyId { get; set; }
         private readonly CompanyDivisionDataAccess _companyDivisonDataAccess;
         private readonly CompanyDataAccess _companyDataAccess;
         public CompanyDivisionForm()
@@ -22,13 +23,37 @@ namespace HRISWebApplication.Setup
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
+            {
                 LoadCompanyId();
-            ShowCompanyDivisionInformation();
+                ShowCompanyDivisionInformation();
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            if (btnSave.Text.Equals("Save"))
+            {
+                txtLocationCode.Enabled = true;
+                SaveCompanyDivisionInformation();
+            }
 
+            ShowCompanyDivisionInformation();
+        }
+
+        private void SaveCompanyDivisionInformation()
+        {
+            IDictionary<string, string> companyDetails = new Dictionary<string, string>()
+            {
+                { "companyId", CompanyId.ToString() },
+                { "officeLocationCode", txtLocationCode.Text },
+                { "officeLocationName", txtLocationName.Text },
+                { "location", txtLocation.Text },
+                { "address1", txtAddress1.Text },
+                { "address2", txtAddress2.Text },
+                { "address3", txtAddress3.Text }
+            };
+
+            _companyDivisonDataAccess.Save(companyDetails);
         }
 
         protected void btnClearForm_Click(object sender, EventArgs e)
@@ -51,6 +76,7 @@ namespace HRISWebApplication.Setup
 
         private void ClearAllFormControl()
         {
+            LoadCompanyId();
             txtLocationCode.Text = string.Empty;
             txtLocationName.Text = string.Empty;
             txtLocation.Text = string.Empty;
@@ -74,11 +100,16 @@ namespace HRISWebApplication.Setup
                     ddlCompanyDivision.Items.Add(lst);
                 }
             }
+            else
+            {
+                ddlCompanyDivision.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
+                CompanyId = "";
+            }
         }
 
         protected void ddlCompanyDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string otherCompanyId = ddlCompanyDivision.SelectedValue;
+            CompanyId = ddlCompanyDivision.SelectedValue;
         }
     }
 }
