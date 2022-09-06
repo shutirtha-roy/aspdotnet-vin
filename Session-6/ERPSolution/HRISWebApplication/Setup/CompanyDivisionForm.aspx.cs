@@ -36,8 +36,31 @@ namespace HRISWebApplication.Setup
                 txtLocationCode.Enabled = true;
                 SaveCompanyDivisionInformation();
             }
+            else if (btnSave.Text.Equals("Update"))
+            {
+                UpdateCompanyDivisionInformation();
+                txtLocationCode.Enabled = true;
+                btnSave.Text = "Save";
+            }
 
             ShowCompanyDivisionInformation();
+            ClearAllFormControl();
+        }
+
+        private void UpdateCompanyDivisionInformation()
+        {
+            IDictionary<string, string> companyDetails = new Dictionary<string, string>()
+            {
+                { "companyId", ddlCompanyDivision.SelectedValue },
+                { "officeLocationCode", txtLocationCode.Text },
+                { "officeLocationName", txtLocationName.Text },
+                { "location", txtLocation.Text },
+                { "address1", txtAddress1.Text },
+                { "address2", txtAddress2.Text },
+                { "address3", txtAddress3.Text }
+            };
+
+            _companyDivisonDataAccess.Update(companyDetails);
         }
 
         private void SaveCompanyDivisionInformation()
@@ -75,6 +98,15 @@ namespace HRISWebApplication.Setup
             else if (e.CommandName.Equals("Select"))
             {
                 ddlCompanyDivision.SelectedValue = GridCompanyDivision.Rows[index].Cells[2].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[2].Text;
+                CompanyId = ddlCompanyDivision.SelectedValue;
+                txtLocationCode.Text = GridCompanyDivision.Rows[index].Cells[3].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[3].Text;
+                txtLocationName.Text = GridCompanyDivision.Rows[index].Cells[4].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[4].Text;
+                txtLocation.Text = GridCompanyDivision.Rows[index].Cells[5].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[5].Text;
+                txtAddress1.Text = GridCompanyDivision.Rows[index].Cells[6].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[6].Text;
+                txtAddress2.Text = GridCompanyDivision.Rows[index].Cells[7].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[7].Text;
+                txtAddress3.Text = GridCompanyDivision.Rows[index].Cells[8].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[8].Text;
+                txtLocationCode.Enabled = false;
+                btnSave.Text = "Update";
             }
         }
 
