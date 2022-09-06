@@ -71,7 +71,7 @@
             <asp:Button CssClass="btn btn-info btn-lg mb-5" ID="btnClearForm" runat="server" Text="ClearForm" OnClick="btnClearForm_Click" />
         </div>
 
-        <asp:GridView ID="GridCompanyDivision" class="table text-center table-font company-information mt-5 table-striped table-bordered" runat="server" OnRowCommand="GridCompanyDivision_RowCommand">
+        <asp:GridView ID="GridCompanyDivision" class="table text-center table-font company-information mt-5 table-striped table-bordered" runat="server" OnRowCommand="GridCompanyDivision_RowCommand" OnRowDeleting="GridCompanyDivision_RowDeleting">
             <Columns>
                 <asp:CommandField ControlStyle-CssClass="btn btn-danger" ShowDeleteButton="True" />
                 <asp:CommandField ControlStyle-CssClass="btn btn-info" ShowSelectButton="True" />
