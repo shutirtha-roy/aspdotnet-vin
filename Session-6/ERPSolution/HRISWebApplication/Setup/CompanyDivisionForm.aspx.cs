@@ -11,14 +11,18 @@ namespace HRISWebApplication.Setup
 {
     public partial class CompanyDivisionForm : System.Web.UI.Page
     {
-        private readonly CompanyDivisionDataAccess _companyDataAccess;
+        private readonly CompanyDivisionDataAccess _companyDivisonDataAccess;
+        private readonly CompanyDataAccess _companyDataAccess;
         public CompanyDivisionForm()
         {
-            _companyDataAccess = new CompanyDivisionDataAccess();
+            _companyDivisonDataAccess = new CompanyDivisionDataAccess();
+            _companyDataAccess = new CompanyDataAccess();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+                LoadCompanyId();
             ShowCompanyDivisionInformation();
         }
 
@@ -40,7 +44,7 @@ namespace HRISWebApplication.Setup
 
         private void ShowCompanyDivisionInformation()
         {
-            DataTable dt = _companyDataAccess.GetAllCompanyDivisionInformation();
+            DataTable dt = _companyDivisonDataAccess.GetAllCompanyDivisionInformation();
             GridCompanyDivision.DataSource = dt;
             GridCompanyDivision.DataBind();
         }
@@ -53,6 +57,28 @@ namespace HRISWebApplication.Setup
             txtAddress1.Text = string.Empty;
             txtAddress2.Text = string.Empty;
             txtAddress3.Text = string.Empty;
+        }
+
+        private void LoadCompanyId()
+        {
+            DataTable dt = _companyDataAccess.GetAllCompanyInformation();
+            ddlCompanyDivision.Items.Clear();
+            if (dt.Rows.Count > 0)
+            {
+                ddlCompanyDivision.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ListItem lst = new ListItem();
+                    lst.Text = dr["CompanyName"].ToString();
+                    lst.Value = dr["CompanyId"].ToString();
+                    ddlCompanyDivision.Items.Add(lst);
+                }
+            }
+        }
+
+        protected void ddlCompanyDivision_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string otherCompanyId = ddlCompanyDivision.SelectedValue;
         }
     }
 }
