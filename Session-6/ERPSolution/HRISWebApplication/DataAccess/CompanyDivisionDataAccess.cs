@@ -8,13 +8,11 @@ using System.Configuration;
 
 namespace HRISWebApplication.DataAccess
 {
-    public class CompanyDivisionDataAccess
+    public class CompanyDivisionDataAccess : DataAccess
     {
-        private readonly SqlConnection _conn;
-
         public CompanyDivisionDataAccess()
         {
-            _conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringHRIS"].ConnectionString);
+
         }
 
         public DataTable GetAllCompanyDivisionInformation()

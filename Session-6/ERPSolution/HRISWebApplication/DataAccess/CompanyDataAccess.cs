@@ -10,14 +10,11 @@ using System.Web.UI;
 
 namespace HRISWebApplication.DataAccess
 {
-    public class CompanyDataAccess
+    public class CompanyDataAccess : DataAccess
     {
-        private readonly SqlConnection _conn;
-
         public CompanyDataAccess()
         {
-            _conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringHRIS"].ConnectionString);
-            
+
         }
         public DataTable GetAllCompanyInformation()
         {
