@@ -69,7 +69,7 @@ namespace HRISWebApplication.DataAccess
             _conn.Close();
         }
 
-        public override void DeleteRow(string companyId)
+        public override void DeleteRow<T>(T companyId)
         {
             _conn.Open();
             string sqlQuery = $"DELETE FROM [dbo].[Hrms_Company_Master] WHERE CompanyId='{companyId}'";
