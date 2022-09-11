@@ -150,7 +150,7 @@ namespace HRISWebApplication.Setup
             else if (e.CommandName.Equals("Delete"))
             {
                 string cid = GridCompany.Rows[index].Cells[2].Text;
-                companyDataAccess.DeleteRow(cid);
+                companyDataAccess.DeleteRow<string>(cid);
                 ShowCompanyInformation();
             }
         }

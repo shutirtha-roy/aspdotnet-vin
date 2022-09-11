@@ -92,7 +92,7 @@ namespace HRISWebApplication.Setup
             if (e.CommandName.Equals("Delete"))
             {
                 string cid = GridCompanyDivision.Rows[index].Cells[3].Text;
-                _companyDivisonDataAccess.DeleteRow(cid);
+                _companyDivisonDataAccess.DeleteRow<string>(cid);
                 ShowCompanyDivisionInformation();
             }
             else if (e.CommandName.Equals("Select"))
