@@ -70,7 +70,7 @@ namespace HRISWebApplication.DataAccess
             _conn.Close();
         }
 
-        public override void DeleteRow(string officeLocationCode)
+        public override void DeleteRow<T>(T officeLocationCode)
         {
             _conn.Open();
             string sqlQuery = $"DELETE FROM [dbo].[Hrms_Company_Division_Master] WHERE OfficeLocationCode='{officeLocationCode}'";

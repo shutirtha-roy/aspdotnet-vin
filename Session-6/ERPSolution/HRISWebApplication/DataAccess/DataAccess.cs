@@ -18,19 +18,16 @@ namespace HRISWebApplication.DataAccess
             _conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStringHRIS"].ConnectionString);
         }
 
-        public virtual void DeleteRow(string officeLocationCode)
+        public virtual void DeleteRow<T>(T officeLocationCode)
         {
-            
         }
 
         public virtual void Save(IDictionary<string, string> companyDivisionDetails)
         {
-            
         }
 
         public virtual void Update(IDictionary<string, string> companyDetails)
         {
-            
         }
     }
 }

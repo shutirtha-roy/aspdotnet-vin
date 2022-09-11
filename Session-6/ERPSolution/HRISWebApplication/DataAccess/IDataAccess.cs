@@ -10,6 +10,6 @@ namespace HRISWebApplication.DataAccess
     {
         void Save(IDictionary<string, string> companyDivisionDetails);
         void Update(IDictionary<string, string> companyDetails);
-        void DeleteRow(string officeLocationCode);
+        void DeleteRow<T>(T officeLocationCode);
     }
 }
