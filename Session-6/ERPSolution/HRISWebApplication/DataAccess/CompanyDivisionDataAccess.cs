@@ -29,7 +29,7 @@ namespace HRISWebApplication.DataAccess
             return dataTable;
         }
 
-        public void Save(IDictionary<string, string> companyDivisionDetails)
+        public override void Save(IDictionary<string, string> companyDivisionDetails)
         {
 
             _conn.Open();
@@ -70,7 +70,7 @@ namespace HRISWebApplication.DataAccess
             _conn.Close();
         }
 
-        public void DeleteRow(string officeLocationCode)
+        public override void DeleteRow(string officeLocationCode)
         {
             _conn.Open();
             string sqlQuery = $"DELETE FROM [dbo].[Hrms_Company_Division_Master] WHERE OfficeLocationCode='{officeLocationCode}'";
@@ -79,7 +79,7 @@ namespace HRISWebApplication.DataAccess
             _conn.Close();
         }
 
-        public void Update(IDictionary<string, string> companyDetails)
+        public override void Update(IDictionary<string, string> companyDetails)
         {
             _conn.Open();
             string sqlQuery = $@"UPDATE [dbo].[Hrms_Company_Division_Master] Set CompanyId = '{companyDetails["companyId"]}',
