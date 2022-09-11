@@ -154,6 +154,7 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Setup\CompanyDivisionForm.aspx" />
     <Content Include="Setup\CompanyInformationForm.aspx" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
@@ -179,6 +180,7 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\CompanyDataAccess.cs" />
+    <Compile Include="DataAccess\CompanyDivisionDataAccess.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -190,6 +192,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup\CompanyDivisionForm.aspx.cs">
+      <DependentUpon>CompanyDivisionForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setup\CompanyDivisionForm.aspx.designer.cs">
+      <DependentUpon>CompanyDivisionForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Setup\CompanyInformationForm.aspx.cs">
       <DependentUpon>CompanyInformationForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
