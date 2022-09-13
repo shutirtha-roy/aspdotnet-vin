@@ -1,0 +1,42 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+/*************FORM***********/
+.form-title {
+    padding: 2vh;
+    margin-top: 0;
+    margin-bottom: 5vh;
+    font-weight: bolder;
+}
+
+.text-large {
+    font-size: 150%;
+}
+
+
+.table-font {
+    font-size: 8.5px;
+    transform: scale(1, 1.3);
+}
+
+.company-information th {
+    background-color: #3596be;
+    color: white;
+}
+
+#btnSave #btnClearForm {
+    width: 9vw;
+    height: 6vh;
+}
+
+/***********TABLE**********/
+#GridCompany {
+    border-color: white;
+}
+
+
+#GridCompany tbody tr > *{
+    text-align: center;
+    font-weight: bold;
+}
