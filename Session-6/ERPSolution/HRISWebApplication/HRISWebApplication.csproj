@@ -181,6 +181,8 @@
     </Compile>
     <Compile Include="DataAccess\CompanyDataAccess.cs" />
     <Compile Include="DataAccess\CompanyDivisionDataAccess.cs" />
+    <Compile Include="DataAccess\DataAccess.cs" />
+    <Compile Include="DataAccess\IDataAccess.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
