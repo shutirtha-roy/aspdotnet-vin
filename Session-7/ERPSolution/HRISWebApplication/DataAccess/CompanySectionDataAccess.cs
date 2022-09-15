@@ -28,9 +28,13 @@ namespace HRISWebApplication.DataAccess
             return dataTable;
         }
 
-        public void DeleteRow<T>(T officeLocationCode)
+        public void DeleteRow<T>(T sectionCode)
         {
-            throw new NotImplementedException();
+            _conn.Open();
+            string sqlQuery = $"DELETE FROM [dbo].[Hrms_Company_Section_Master] WHERE SectionCode='{sectionCode}'";
+            SqlCommand command = new SqlCommand(sqlQuery, _conn);
+            command.ExecuteNonQuery();
+            _conn.Close();
         }
 
         public void Save(IDictionary<string, string> companySection)
