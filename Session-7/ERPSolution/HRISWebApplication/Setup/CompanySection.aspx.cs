@@ -168,7 +168,20 @@ namespace HRISWebApplication.Setup
 
         protected void btnClearForm_Click(object sender, EventArgs e)
         {
+            txtSectionCode.Enabled = true;
+            ClearAllFormControl();
+            btnSave.Text = "Save";
+        }
 
+        private void ClearAllFormControl()
+        {
+            LoadCompanyId();
+            LoadOfficeLocationId();
+            LoadCompanyDepartmentId();
+            txtSectionCode.Text = string.Empty;
+            txtSectionName.Text = string.Empty;
+            txtHeadOfSection.Text = string.Empty;
+            txtSubstituteHeadOfSection.Text = string.Empty;
         }
 
         protected void ddlCompanyDivision_SelectedIndexChanged(object sender, EventArgs e)
