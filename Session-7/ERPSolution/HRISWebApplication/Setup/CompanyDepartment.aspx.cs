@@ -159,6 +159,22 @@ namespace HRISWebApplication.Setup
                 _companyDepartmentDataAccess.DeleteRow<string>(did);
                 ShowCompanyDepartmentInformation();
             }
+            else if (e.CommandName.Equals("Select"))
+            {
+                ddlCompanyDivision.SelectedValue = GridCompanyDepartment.Rows[index].Cells[2].Text.Equals("&nbsp;") ? "" : GridCompanyDepartment.Rows[index].Cells[2].Text;
+                CompanyId = ddlCompanyDivision.SelectedValue;
+
+                ddlCompanyOfficeLocation.SelectedValue = GridCompanyDepartment.Rows[index].Cells[3].Text.Equals("&nbsp;") ? "" : GridCompanyDepartment.Rows[index].Cells[3].Text;
+                OfficeLocationId = ddlCompanyOfficeLocation.SelectedValue;
+
+                txtDepartmentCode.Text = GridCompanyDepartment.Rows[index].Cells[4].Text.Equals("&nbsp;") ? "" : GridCompanyDepartment.Rows[index].Cells[4].Text;
+                txtDepartmentName.Text = GridCompanyDepartment.Rows[index].Cells[5].Text.Equals("&nbsp;") ? "" : GridCompanyDepartment.Rows[index].Cells[5].Text;
+                txtDepartmentLocation.Text = GridCompanyDepartment.Rows[index].Cells[6].Text.Equals("&nbsp;") ? "" : GridCompanyDepartment.Rows[index].Cells[6].Text;
+                txtHeadOfDepartment.Text = GridCompanyDepartment.Rows[index].Cells[7].Text.Equals("&nbsp;") ? "" : GridCompanyDepartment.Rows[index].Cells[7].Text;
+                txtSubstituteHeadOfDepartment.Text = GridCompanyDepartment.Rows[index].Cells[8].Text.Equals("&nbsp;") ? "" : GridCompanyDepartment.Rows[index].Cells[8].Text;
+                txtDepartmentCode.Enabled = false;
+                btnSave.Text = "Update";
+            }
         }
 
         protected void GridCompanyDivision_RowDeleting(object sender, GridViewDeleteEventArgs e)
