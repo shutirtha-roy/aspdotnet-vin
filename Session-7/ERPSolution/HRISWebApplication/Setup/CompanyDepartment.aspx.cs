@@ -108,6 +108,8 @@ namespace HRISWebApplication.Setup
                 txtDepartmentCode.Enabled = true;
                 btnSave.Text = "Save";
             }
+
+            ShowCompanyDepartmentInformation();
         }
 
         private void SaveCompanyDepartmentInformation()
@@ -128,7 +130,18 @@ namespace HRISWebApplication.Setup
 
         private void UpdateCompanyDivisionInformation()
         {
-            throw new NotImplementedException();
+            IDictionary<string, string> companyDepartment = new Dictionary<string, string>()
+            {
+                { "companyId", CompanyId.ToString() },
+                { "locationId",  OfficeLocationId.ToString() },
+                { "departmentCode", txtDepartmentCode.Text },
+                { "departmentName", txtDepartmentName.Text },
+                { "departmentLocation", txtDepartmentLocation.Text },
+                { "headOfDepartment", txtHeadOfDepartment.Text },
+                { "substituteHeadOfDepartment", txtSubstituteHeadOfDepartment.Text },
+            };
+
+            _companyDepartmentDataAccess.Update(companyDepartment);
         }
 
         protected void btnClearForm_Click(object sender, EventArgs e)
@@ -138,7 +151,14 @@ namespace HRISWebApplication.Setup
 
         protected void GridCompanyDivision_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int index = int.Parse(e.CommandArgument.ToString());
 
+            if (e.CommandName.Equals("Delete"))
+            {
+                string did = GridCompanyDepartment.Rows[index].Cells[4].Text;
+                _companyDepartmentDataAccess.DeleteRow<string>(did);
+                ShowCompanyDepartmentInformation();
+            }
         }
 
         protected void GridCompanyDivision_RowDeleting(object sender, GridViewDeleteEventArgs e)
