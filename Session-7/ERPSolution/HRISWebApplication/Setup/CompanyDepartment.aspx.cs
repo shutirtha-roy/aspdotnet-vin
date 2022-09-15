@@ -146,7 +146,20 @@ namespace HRISWebApplication.Setup
 
         protected void btnClearForm_Click(object sender, EventArgs e)
         {
+            txtDepartmentCode.Enabled = true;
+            ClearAllFormControl();
+            btnSave.Text = "Save";
+        }
 
+        private void ClearAllFormControl()
+        {
+            LoadCompanyId();
+            LoadOfficeLocationId();
+            txtDepartmentCode.Text = string.Empty;
+            txtDepartmentName.Text = string.Empty;
+            txtDepartmentLocation.Text = string.Empty;
+            txtHeadOfDepartment.Text = string.Empty;
+            txtSubstituteHeadOfDepartment.Text = string.Empty;
         }
 
         protected void GridCompanyDivision_RowCommand(object sender, GridViewCommandEventArgs e)
