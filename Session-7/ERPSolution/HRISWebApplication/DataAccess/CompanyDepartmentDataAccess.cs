@@ -63,9 +63,17 @@ namespace HRISWebApplication.DataAccess
 
         
 
-        public void Update(IDictionary<string, string> companyDetails)
+        public void Update(IDictionary<string, string> companyDepartment)
         {
-            throw new NotImplementedException();
+            _conn.Open();
+            string sqlQuery = $@"UPDATE [dbo].[Hrms_Company_Department_Master] Set CompanyId = '{companyDepartment["companyId"]}',
+                               OfficeLocationId = '{companyDepartment["locationId"]}', DepartmentName = '{companyDepartment["departmentName"]}',
+                               DepartmentLocation = '{companyDepartment["departmentLocation"]}', HeadOfDepartment = '{companyDepartment["headOfDepartment"]}',
+                               SubstituteHeadOfDepartment = '{companyDepartment["substituteHeadOfDepartment"]}' WHERE DepartmentCode = '{companyDepartment["departmentCode"]}'";
+
+            SqlCommand command = new SqlCommand(sqlQuery, _conn);
+            command.ExecuteNonQuery();
+            _conn.Close();
         }
 
         
