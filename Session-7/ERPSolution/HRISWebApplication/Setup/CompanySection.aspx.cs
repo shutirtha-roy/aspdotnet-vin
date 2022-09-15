@@ -34,7 +34,7 @@ namespace HRISWebApplication.Setup
                 LoadCompanyId();
                 LoadOfficeLocationId();
                 LoadCompanySectionId();
-                //ShowCompanySectionInformation();
+                ShowCompanySectionInformation();
             }
         }
 
@@ -134,7 +134,7 @@ namespace HRISWebApplication.Setup
             {
                 { "companyId", CompanyId.ToString() },
                 { "locationId",  OfficeLocationId.ToString() },
-                { "departmentCode",  CompanySectionId.ToString() },
+                { "departmentCode",  ddlCompanyDivision.ToString() },
                 { "sectionCode", txtSectionCode.Text },
                 { "sectionName", txtSectionName.Text },
                 { "headOfSection", txtHeadOfSection.Text },
@@ -150,7 +150,7 @@ namespace HRISWebApplication.Setup
             {
                 { "companyId", CompanyId.ToString() },
                 { "locationId",  OfficeLocationId.ToString() },
-                { "departmentCode",  CompanySectionId.ToString() },
+                { "departmentCode",  ddlCompanyDivision.ToString() },
                 { "sectionCode", txtSectionCode.Text },
                 { "sectionName", txtSectionName.Text },
                 { "headOfSection", txtHeadOfSection.Text },
@@ -184,12 +184,37 @@ namespace HRISWebApplication.Setup
 
         protected void GridCompanyDivision_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            int index = int.Parse(e.CommandArgument.ToString());
 
+            if (e.CommandName.Equals("Delete"))
+            {
+                string did = GridCompanySection.Rows[index].Cells[5].Text;
+                _companySectionDataAccess.DeleteRow<string>(did);
+                ShowCompanySectionInformation();
+            }
+            else if (e.CommandName.Equals("Select"))
+            {
+                ddlCompanyDivision.SelectedValue = GridCompanySection.Rows[index].Cells[2].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[2].Text;
+                CompanyId = ddlCompanyDivision.SelectedValue;
+
+                ddlCompanyOfficeLocation.SelectedValue = GridCompanySection.Rows[index].Cells[3].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[3].Text;
+                OfficeLocationId = ddlCompanyOfficeLocation.SelectedValue;
+
+                ddlCompanyDepartmentCode.SelectedValue = GridCompanySection.Rows[index].Cells[4].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[4].Text;
+                CompanySectionId = ddlCompanyDepartmentCode.SelectedValue;
+
+                txtSectionCode.Text = GridCompanySection.Rows[index].Cells[5].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[5].Text;
+                txtSectionName.Text = GridCompanySection.Rows[index].Cells[6].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[6].Text;
+                txtHeadOfSection.Text = GridCompanySection.Rows[index].Cells[7].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[7].Text;
+                txtSubstituteHeadOfSection.Text = GridCompanySection.Rows[index].Cells[8].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[8].Text;
+                txtSectionCode.Enabled = false;
+                btnSave.Text = "Update";
+            }
         }
 
         protected void GridCompanyDivision_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-
+            
         }
     }
 }
