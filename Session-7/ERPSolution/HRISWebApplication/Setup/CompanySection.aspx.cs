@@ -113,8 +113,54 @@ namespace HRISWebApplication.Setup
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            if (btnSave.Text.Equals("Save"))
+            {
+                txtSectionCode.Enabled = true;
+                SaveCompanySectionInformation();
+            }
+            else if (btnSave.Text.Equals("Update"))
+            {
+                UpdateCompanySectionInformation();
+                txtSectionCode.Enabled = true;
+                btnSave.Text = "Save";
+            }
 
+            ShowCompanySectionInformation();
         }
+
+        private void SaveCompanySectionInformation()
+        {
+            IDictionary<string, string> companySection = new Dictionary<string, string>()
+            {
+                { "companyId", CompanyId.ToString() },
+                { "locationId",  OfficeLocationId.ToString() },
+                { "departmentCode",  CompanySectionId.ToString() },
+                { "sectionCode", txtSectionCode.Text },
+                { "sectionName", txtSectionName.Text },
+                { "headOfSection", txtHeadOfSection.Text },
+                { "substituteHeadOfSection", txtSubstituteHeadOfSection.Text },
+            };
+
+            _companySectionDataAccess.Save(companySection);
+        }
+
+        private void UpdateCompanySectionInformation()
+        {
+            IDictionary<string, string> companySection = new Dictionary<string, string>()
+            {
+                { "companyId", CompanyId.ToString() },
+                { "locationId",  OfficeLocationId.ToString() },
+                { "departmentCode",  CompanySectionId.ToString() },
+                { "sectionCode", txtSectionCode.Text },
+                { "sectionName", txtSectionName.Text },
+                { "headOfSection", txtHeadOfSection.Text },
+                { "substituteHeadOfSection", txtSubstituteHeadOfSection.Text },
+            };
+
+            _companySectionDataAccess.Update(companySection);
+        }
+
+        
 
         protected void btnClearForm_Click(object sender, EventArgs e)
         {
@@ -123,12 +169,17 @@ namespace HRISWebApplication.Setup
 
         protected void ddlCompanyDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            CompanyId = ddlCompanyDivision.SelectedValue;
         }
 
         protected void ddlOfficeLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
+            OfficeLocationId = ddlCompanyOfficeLocation.SelectedValue;
+        }
 
+        protected void ddlCompanyDepartmentCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CompanySectionId = ddlCompanyDepartmentCode.SelectedValue;
         }
 
         protected void GridCompanyDivision_RowCommand(object sender, GridViewCommandEventArgs e)
