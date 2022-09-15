@@ -115,13 +115,15 @@ namespace HRISWebApplication.Setup
             IDictionary<string, string> companyDepartment = new Dictionary<string, string>()
             {
                 { "companyId", CompanyId.ToString() },
-                { "officeLocationCode", OfficeLocationId.ToString() },
-                { "officeLocationName", txtLocationName.Text },
-                { "location", txtLocation.Text },
-                { "address1", txtAddress1.Text },
-                { "address2", txtAddress2.Text },
-                { "address3", txtAddress3.Text }
+                { "locationId",  OfficeLocationId.ToString() },
+                { "departmentCode", txtDepartmentCode.Text },
+                { "departmentName", txtDepartmentName.Text },
+                { "departmentLocation", txtDepartmentLocation.Text },
+                { "headOfDepartment", txtHeadOfDepartment.Text },
+                { "substituteHeadOfDepartment", txtSubstituteHeadOfDepartment.Text },
             };
+
+            _companyDepartmentDataAccess.Save(companyDepartment);
         }
 
         private void UpdateCompanyDivisionInformation()
