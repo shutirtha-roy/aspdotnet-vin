@@ -157,6 +157,7 @@
     <Content Include="Setup\CompanyDepartment.aspx" />
     <Content Include="Setup\CompanyDivisionForm.aspx" />
     <Content Include="Setup\CompanyInformationForm.aspx" />
+    <Content Include="Setup\CompanySection.aspx" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -183,6 +184,7 @@
     <Compile Include="DataAccess\CompanyDataAccess.cs" />
     <Compile Include="DataAccess\CompanyDepartmentDataAccess.cs" />
     <Compile Include="DataAccess\CompanyDivisionDataAccess.cs" />
+    <Compile Include="DataAccess\CompanySectionDataAccess.cs" />
     <Compile Include="DataAccess\DataAccess.cs" />
     <Compile Include="DataAccess\IDataAccess.cs" />
     <Compile Include="Default.aspx.cs">
@@ -216,6 +218,13 @@
     </Compile>
     <Compile Include="Setup\CompanyInformationForm.aspx.designer.cs">
       <DependentUpon>CompanyInformationForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\CompanySection.aspx.cs">
+      <DependentUpon>CompanySection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Setup\CompanySection.aspx.designer.cs">
+      <DependentUpon>CompanySection.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

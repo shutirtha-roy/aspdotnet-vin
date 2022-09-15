@@ -64,9 +64,17 @@ namespace HRISWebApplication.DataAccess
             _conn.Close();
         }
 
-        public void Update(IDictionary<string, string> companyDetails)
+        public void Update(IDictionary<string, string> companySection)
         {
-            throw new NotImplementedException();
+            _conn.Open();
+            string sqlQuery = $@"UPDATE [dbo].[Hrms_Company_Section_Master] Set CompanyId = '{companySection["companyId"]}',
+                               OfficeLocationId = '{companySection["locationId"]}', DepartmentCode = '{companySection["departmentCode"]}',
+                               SectionName = '{companySection["sectionName"]}', HeadOfSection = '{companySection["headOfSection"]}',
+                               SubstituteHeadOfSection = '{companySection["substituteHeadOfSection"]}' WHERE SectionCode = '{companySection["sectionCode"]}'";
+
+            SqlCommand command = new SqlCommand(sqlQuery, _conn);
+            command.ExecuteNonQuery();
+            _conn.Close();
         }
 
         
