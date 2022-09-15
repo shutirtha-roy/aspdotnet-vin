@@ -13,7 +13,7 @@ namespace HRISWebApplication.Setup
     {
         public static string CompanyId { get; set; }
         public static string OfficeLocationId { get; set; }
-        public static string CompanySectionId { get; set; }
+        public static string CompanyDepartmentId { get; set; }
         private readonly CompanySectionDataAccess _companySectionDataAccess;
         private readonly CompanyDepartmentDataAccess _companyDepartmentDataAccess;
         private readonly CompanyDivisionDataAccess _companyDivisonDataAccess;
@@ -33,52 +33,8 @@ namespace HRISWebApplication.Setup
             {
                 LoadCompanyId();
                 LoadOfficeLocationId();
-                LoadCompanySectionId();
+                LoadCompanyDepartmentId();
                 ShowCompanySectionInformation();
-            }
-        }
-
-        private void LoadCompanySectionId()
-        {
-            DataTable dt = _companyDepartmentDataAccess.GetAllCompanyDepartmentInformation();
-            ddlCompanyDepartmentCode.Items.Clear();
-            if (dt.Rows.Count > 0)
-            {
-                ddlCompanyOfficeLocation.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
-                foreach (DataRow dr in dt.Rows)
-                {
-                    ListItem lst = new ListItem();
-                    lst.Text = dr["DepartmentName"].ToString();
-                    lst.Value = dr["DepartmentCode"].ToString();
-                    ddlCompanyDepartmentCode.Items.Add(lst);
-                }
-            }
-            else
-            {
-                ddlCompanyDepartmentCode.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
-                CompanySectionId = "";
-            }
-        }
-
-        private void LoadOfficeLocationId()
-        {
-            DataTable dt = _companyDivisonDataAccess.GetAllCompanyDivisionInformation();
-            ddlCompanyOfficeLocation.Items.Clear();
-            if (dt.Rows.Count > 0)
-            {
-                ddlCompanyOfficeLocation.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
-                foreach (DataRow dr in dt.Rows)
-                {
-                    ListItem lst = new ListItem();
-                    lst.Text = dr["OfficeLocationName"].ToString();
-                    lst.Value = dr["OfficeLocationCode"].ToString();
-                    ddlCompanyOfficeLocation.Items.Add(lst);
-                }
-            }
-            else
-            {
-                ddlCompanyOfficeLocation.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
-                CompanyId = "";
             }
         }
 
@@ -103,6 +59,54 @@ namespace HRISWebApplication.Setup
                 CompanyId = "";
             }
         }
+
+        private void LoadOfficeLocationId()
+        {
+            DataTable dt = _companyDivisonDataAccess.GetAllCompanyDivisionInformation();
+            ddlCompanyOfficeLocation.Items.Clear();
+            if (dt.Rows.Count > 0)
+            {
+                ddlCompanyOfficeLocation.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ListItem lst = new ListItem();
+                    lst.Text = dr["OfficeLocationName"].ToString();
+                    lst.Value = dr["OfficeLocationCode"].ToString();
+                    ddlCompanyOfficeLocation.Items.Add(lst);
+                }
+            }
+            else
+            {
+                ddlCompanyOfficeLocation.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
+                OfficeLocationId = "";
+            }
+        }
+
+        private void LoadCompanyDepartmentId()
+        {
+            DataTable dt = _companyDepartmentDataAccess.GetAllCompanyDepartmentInformation();
+            ddlCompanyDepartmentCode.Items.Clear();
+            if (dt.Rows.Count > 0)
+            {
+                ddlCompanyDepartmentCode.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ListItem lst = new ListItem();
+                    lst.Text = dr["DepartmentName"].ToString();
+                    lst.Value = dr["DepartmentCode"].ToString();
+                    ddlCompanyDepartmentCode.Items.Add(lst);
+                }
+            }
+            else
+            {
+                ddlCompanyDepartmentCode.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
+                CompanyDepartmentId = "";
+            }
+        }
+
+        
+
+        
 
         private void ShowCompanySectionInformation()
         {
@@ -134,7 +138,7 @@ namespace HRISWebApplication.Setup
             {
                 { "companyId", CompanyId.ToString() },
                 { "locationId",  OfficeLocationId.ToString() },
-                { "departmentCode",  ddlCompanyDivision.ToString() },
+                { "departmentCode",  CompanyDepartmentId.ToString() },
                 { "sectionCode", txtSectionCode.Text },
                 { "sectionName", txtSectionName.Text },
                 { "headOfSection", txtHeadOfSection.Text },
@@ -150,7 +154,7 @@ namespace HRISWebApplication.Setup
             {
                 { "companyId", CompanyId.ToString() },
                 { "locationId",  OfficeLocationId.ToString() },
-                { "departmentCode",  ddlCompanyDivision.ToString() },
+                { "departmentCode",  CompanyDepartmentId.ToString() },
                 { "sectionCode", txtSectionCode.Text },
                 { "sectionName", txtSectionName.Text },
                 { "headOfSection", txtHeadOfSection.Text },
@@ -172,14 +176,14 @@ namespace HRISWebApplication.Setup
             CompanyId = ddlCompanyDivision.SelectedValue;
         }
 
-        protected void ddlOfficeLocation_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlCompanyOfficeLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
             OfficeLocationId = ddlCompanyOfficeLocation.SelectedValue;
         }
 
         protected void ddlCompanyDepartmentCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CompanySectionId = ddlCompanyDepartmentCode.SelectedValue;
+            CompanyDepartmentId = ddlCompanyDepartmentCode.SelectedValue;
         }
 
         protected void GridCompanyDivision_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -201,7 +205,7 @@ namespace HRISWebApplication.Setup
                 OfficeLocationId = ddlCompanyOfficeLocation.SelectedValue;
 
                 ddlCompanyDepartmentCode.SelectedValue = GridCompanySection.Rows[index].Cells[4].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[4].Text;
-                CompanySectionId = ddlCompanyDepartmentCode.SelectedValue;
+                CompanyDepartmentId = ddlCompanyDepartmentCode.SelectedValue;
 
                 txtSectionCode.Text = GridCompanySection.Rows[index].Cells[5].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[5].Text;
                 txtSectionName.Text = GridCompanySection.Rows[index].Cells[6].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[6].Text;
