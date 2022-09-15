@@ -34,10 +34,10 @@ namespace HRISWebApplication.DataAccess
             string sqlQuery = $@"INSERT INTO [dbo].[Hrms_Company_Department_Master] 
                 ([CompanyId] ,[OfficeLocationId], [DepartmentCode] ,[DepartmentName]
                 , [DepartmentLocation], [HeadOfDepartment] ,[SubstituteHeadOfDepartment]) VALUES 
-                ('{companyDepartment[""]}', '{companyDepartment[""]}',
-                '{companyDepartment[""]}', '{companyDepartment[""]}',
-                '{companyDepartment[""]}', '{companyDepartment[""]}',
-                '{companyDepartment[""]}')";
+                ('{companyDepartment["companyId"]}', '{companyDepartment["locationId"]}',
+                '{companyDepartment["departmentCode"]}', '{companyDepartment["departmentName"]}',
+                '{companyDepartment["departmentLocation"]}', '{companyDepartment["headOfDepartment"]}',
+                '{companyDepartment["substituteHeadOfDepartment"]}')";
 
             SqlCommand command = new SqlCommand(sqlQuery, _conn);
 
