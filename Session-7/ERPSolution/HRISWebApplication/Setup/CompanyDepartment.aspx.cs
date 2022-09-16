@@ -43,10 +43,13 @@ namespace HRISWebApplication.Setup
                 ddlCompanyOfficeLocation.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
                 foreach (DataRow dr in dt.Rows)
                 {
-                    ListItem lst = new ListItem();
-                    lst.Text = dr["OfficeLocationName"].ToString();
-                    lst.Value = dr["OfficeLocationCode"].ToString();
-                    ddlCompanyOfficeLocation.Items.Add(lst);
+                    if (dr["CompanyId"].ToString() == CompanyId)
+                    {
+                        ListItem lst = new ListItem();
+                        lst.Text = dr["OfficeLocationName"].ToString();
+                        lst.Value = dr["OfficeLocationCode"].ToString();
+                        ddlCompanyOfficeLocation.Items.Add(lst);
+                    }
                 }
             }
             else
@@ -81,6 +84,7 @@ namespace HRISWebApplication.Setup
         protected void ddlCompanyDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
             CompanyId = ddlCompanyDivision.SelectedValue;
+            LoadOfficeLocationId();
         }
 
         protected void ddlOfficeLocation_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,6 +114,7 @@ namespace HRISWebApplication.Setup
             }
 
             ShowCompanyDepartmentInformation();
+            ClearAllFormControl();
         }
 
         private void SaveCompanyDepartmentInformation()

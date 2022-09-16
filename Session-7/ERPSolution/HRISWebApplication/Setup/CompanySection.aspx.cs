@@ -69,10 +69,14 @@ namespace HRISWebApplication.Setup
                 ddlCompanyOfficeLocation.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
                 foreach (DataRow dr in dt.Rows)
                 {
-                    ListItem lst = new ListItem();
-                    lst.Text = dr["OfficeLocationName"].ToString();
-                    lst.Value = dr["OfficeLocationCode"].ToString();
-                    ddlCompanyOfficeLocation.Items.Add(lst);
+                    if(dr["CompanyId"].ToString() == CompanyId)
+                    {
+                        ListItem lst = new ListItem();
+                        lst.Text = dr["OfficeLocationName"].ToString();
+                        lst.Value = dr["OfficeLocationCode"].ToString();
+                        ddlCompanyOfficeLocation.Items.Add(lst);
+                    }
+                    
                 }
             }
             else
@@ -91,10 +95,13 @@ namespace HRISWebApplication.Setup
                 ddlCompanyDepartmentCode.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
                 foreach (DataRow dr in dt.Rows)
                 {
-                    ListItem lst = new ListItem();
-                    lst.Text = dr["DepartmentName"].ToString();
-                    lst.Value = dr["DepartmentCode"].ToString();
-                    ddlCompanyDepartmentCode.Items.Add(lst);
+                    if (dr["CompanyId"].ToString() == CompanyId)
+                    { 
+                        ListItem lst = new ListItem();
+                        lst.Text = dr["DepartmentName"].ToString();
+                        lst.Value = dr["DepartmentCode"].ToString();
+                        ddlCompanyDepartmentCode.Items.Add(lst);
+                    }
                 }
             }
             else
@@ -130,6 +137,7 @@ namespace HRISWebApplication.Setup
             }
 
             ShowCompanySectionInformation();
+            ClearAllFormControl();
         }
 
         private void SaveCompanySectionInformation()
@@ -187,16 +195,19 @@ namespace HRISWebApplication.Setup
         protected void ddlCompanyDivision_SelectedIndexChanged(object sender, EventArgs e)
         {
             CompanyId = ddlCompanyDivision.SelectedValue;
+            LoadOfficeLocationId();
         }
 
         protected void ddlCompanyOfficeLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
             OfficeLocationId = ddlCompanyOfficeLocation.SelectedValue;
+            LoadCompanyDepartmentId();
         }
 
         protected void ddlCompanyDepartmentCode_SelectedIndexChanged(object sender, EventArgs e)
         {
             CompanyDepartmentId = ddlCompanyDepartmentCode.SelectedValue;
+
         }
 
         protected void GridCompanyDivision_RowCommand(object sender, GridViewCommandEventArgs e)
