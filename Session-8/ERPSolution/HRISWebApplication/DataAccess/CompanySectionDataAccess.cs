@@ -41,7 +41,29 @@ namespace HRISWebApplication.DataAccess
         {
             _conn.Open();
 
-            string sqlQuery = $@"INSERT INTO [dbo].[Hrms_Company_Section_Master] 
+            if (companySection["companyId"] == "-1")
+            {
+                string companyExceptionMessage = "Company Id not selected";
+                HttpContext.Current.Response.Write($"<script>alert('{companyExceptionMessage}')</script>");
+            }
+            else if (companySection["locationId"] == "-1")
+            {
+                string companyExceptionMessage = "Office Location Id not selected";
+                HttpContext.Current.Response.Write($"<script>alert('{companyExceptionMessage}')</script>");
+            }
+            else if (companySection["departmentCode"] == "-1")
+            {
+                string companyExceptionMessage = "Department Code not selected";
+                HttpContext.Current.Response.Write($"<script>alert('{companyExceptionMessage}')</script>");
+            }
+            else if (companySection["sectionCode"] == "-1" || companySection["sectionCode"] == "")
+            {
+                string companyExceptionMessage = "Section Code not selected";
+                HttpContext.Current.Response.Write($"<script>alert('{companyExceptionMessage}')</script>");
+            }
+            else
+            {
+                string sqlQuery = $@"INSERT INTO [dbo].[Hrms_Company_Section_Master] 
                 ([CompanyId] ,[OfficeLocationId], [DepartmentCode] ,[SectionCode]
                 , [SectionName], [HeadOfSection] ,[SubstituteHeadOfSection]) VALUES 
                 ('{companySection["companyId"]}', '{companySection["locationId"]}',
@@ -49,17 +71,19 @@ namespace HRISWebApplication.DataAccess
                 '{companySection["sectionName"]}', '{companySection["headOfSection"]}',
                 '{companySection["substituteHeadOfSection"]}')";
 
-            SqlCommand command = new SqlCommand(sqlQuery, _conn);
+                SqlCommand command = new SqlCommand(sqlQuery, _conn);
 
-            try
-            {
-                command.ExecuteNonQuery();
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    string primaryKeyExceptionMessage = "Duplicate Primary Key Entered";
+                    HttpContext.Current.Response.Write($"<script>alert('{primaryKeyExceptionMessage}')</script>");
+                }
             }
-            catch (Exception ex)
-            {
-                string primaryKeyExceptionMessage = "Duplicate Primary Key Entered";
-                HttpContext.Current.Response.Write($"<script>alert('{primaryKeyExceptionMessage}')</script>");
-            }
+            
 
             _conn.Close();
         }
@@ -67,7 +91,9 @@ namespace HRISWebApplication.DataAccess
         public void Update(IDictionary<string, string> companySection)
         {
             _conn.Open();
-            string sqlQuery = $@"UPDATE [dbo].[Hrms_Company_Section_Master] Set SectionName = '{companySection["sectionName"]}', HeadOfSection = '{companySection["headOfSection"]}',
+            string sqlQuery = $@"UPDATE [dbo].[Hrms_Company_Section_Master] Set CompanyId = '{companySection["companyId"]}',
+                               OfficeLocationId = '{companySection["locationId"]}', DepartmentCode = '{companySection["departmentCode"]}',
+                               SectionName = '{companySection["sectionName"]}', HeadOfSection = '{companySection["headOfSection"]}',
                                SubstituteHeadOfSection = '{companySection["substituteHeadOfSection"]}' WHERE SectionCode = '{companySection["sectionCode"]}'";
 
             SqlCommand command = new SqlCommand(sqlQuery, _conn);

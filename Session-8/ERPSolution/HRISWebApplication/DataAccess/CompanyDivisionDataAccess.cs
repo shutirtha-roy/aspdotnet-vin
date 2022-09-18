@@ -34,15 +34,15 @@ namespace HRISWebApplication.DataAccess
 
             _conn.Open();
 
-            if (companyDivisionDetails["officeLocationCode"] == "")
-            {
-                string primaryKeyExceptionMessage = "Empty Primary Key entered";
-                HttpContext.Current.Response.Write($"<script>alert('{primaryKeyExceptionMessage}')</script>");
-            }
-            else if (companyDivisionDetails["companyId"] == "-1")
+            if (companyDivisionDetails["companyId"] == "-1")
             {
                 string companyExceptionMessage = "Company Id not selected";
                 HttpContext.Current.Response.Write($"<script>alert('{companyExceptionMessage}')</script>");
+            }
+            else if (companyDivisionDetails["officeLocationCode"] == "")
+            {
+                string primaryKeyExceptionMessage = "Location Code is not entered";
+                HttpContext.Current.Response.Write($"<script>alert('{primaryKeyExceptionMessage}')</script>");
             }
             else
             {

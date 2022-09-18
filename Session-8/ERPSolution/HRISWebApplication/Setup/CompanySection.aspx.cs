@@ -11,9 +11,9 @@ namespace HRISWebApplication.Setup
 {
     public partial class CompanySection : System.Web.UI.Page
     {
-        public static string CompanyId { get; set; }
-        public static string OfficeLocationId { get; set; }
-        public static string CompanyDepartmentId { get; set; }
+        public static string CompanyId { get; set; } = "-1";
+        public static string OfficeLocationId { get; set; } = "-1";
+        public static string CompanyDepartmentId { get; set; } = "-1";
         private readonly CompanySectionDataAccess _companySectionDataAccess;
         private readonly CompanyDepartmentDataAccess _companyDepartmentDataAccess;
         private readonly CompanyDivisionDataAccess _companyDivisonDataAccess;
