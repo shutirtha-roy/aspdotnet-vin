@@ -54,7 +54,7 @@
                 </div>
             </div>
 
-            <asp:Button CssClass="btn btn-primary btn-lg mb-5" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+            <asp:Button CssClass="btn btn-success btn-lg mb-5" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
             &nbsp;
             <asp:Button CssClass="btn btn-secondary btn-lg mb-5" ID="btnClearForm" runat="server" Text="ClearForm" OnClick="btnClearForm_Click" />
         </div>

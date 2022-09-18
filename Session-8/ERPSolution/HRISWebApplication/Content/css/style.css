@@ -21,8 +21,8 @@
     transform: scale(1, 1.3);
 }
 
-.company-information th {
-    background-color: #3596be;
+th {
+    background-color: #000;
     color: white;
 }
 
