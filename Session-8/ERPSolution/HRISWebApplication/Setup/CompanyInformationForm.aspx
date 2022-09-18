@@ -1,25 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CompanyInformationForm.aspx.cs" Inherits="HRISWebApplication.Setup.CompanyInformationForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="CompanyInformationForm.aspx.cs" Inherits="HRISWebApplication.Setup.CompanyInformationForm" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head runat="server">
-    <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link href="../Content/css/style.css" rel="stylesheet" />
-</head>
-
-<body>
-    <div class="text-center bg-primary">
+<asp:Content ID="CompanyInformationForm" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="text-center">
         <h1 class="form-title">COMPANY SETUP</h1>
     </div>
  
 
     <form class="mt-5 mt-5" runat="server">
 
-        <div class="mx-auto text-center mb-5" style="width: 620px;">
+        <div class=" mx-auto text-center mb-5" style="width: 620px;" >
             <div class="form-group row">
                 <asp:Label CssClass="col-sm-4 col-form-label col-form-label-lg text-large" ID="Label1" runat="server" Text="Company ID"></asp:Label>
                 <div class="col-sm-8">
@@ -127,10 +116,8 @@
 
             <asp:Button CssClass="btn btn-primary btn-lg mb-5" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
             &nbsp;
-            <asp:Button CssClass="btn btn-info btn-lg mb-5" ID="btnClearForm" runat="server" Text="ClearForm" OnClick="btnClearForm_Click" />
+            <asp:Button CssClass="btn btn-secondary btn-lg mb-5" ID="btnClearForm" runat="server" Text="ClearForm" OnClick="btnClearForm_Click" />
         </div>
-
-        
 
         <asp:GridView ID="GridCompany" class="table text-center table-font company-information mt-5 table-striped table-bordered" runat="server" OnRowDeleting="GridCompany_RowDeleting" OnRowCommand="GridCompany_RowCommand">
             <Columns>
@@ -144,13 +131,4 @@
 
     </form>
 
-    
-</body>
-
-
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-
-</html>
-
+</asp:Content>

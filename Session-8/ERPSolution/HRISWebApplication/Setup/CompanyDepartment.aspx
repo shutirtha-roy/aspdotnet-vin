@@ -1,17 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CompanyDepartment.aspx.cs" Inherits="HRISWebApplication.Setup.CompanyDepartment" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="CompanyDepartment.aspx.cs" Inherits="HRISWebApplication.Setup.CompanyDepartment" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link href="../Content/css/style.css" rel="stylesheet" />
-</head>
-
-<body>
-    <div class="text-center bg-primary">
+<asp:Content ID="CompanyDepartmentForm" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="text-center">
         <h1 class="form-title"> DEPARTMENT SETUP</h1>
     </div>
 
@@ -67,7 +58,7 @@
 
             <asp:Button CssClass="btn btn-primary btn-lg mb-5" ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
             &nbsp;
-            <asp:Button CssClass="btn btn-info btn-lg mb-5" ID="btnClearForm" runat="server" Text="ClearForm" OnClick="btnClearForm_Click" />
+            <asp:Button CssClass="btn btn-secondary btn-lg mb-5" ID="btnClearForm" runat="server" Text="ClearForm" OnClick="btnClearForm_Click" />
         </div>
 
         <asp:GridView ID="GridCompanyDepartment" class="table text-center table-font company-information mt-5 table-striped table-bordered" runat="server" OnRowCommand="GridCompanyDivision_RowCommand" OnRowDeleting="GridCompanyDivision_RowDeleting">
@@ -76,6 +67,8 @@
                 <asp:CommandField ControlStyle-CssClass="btn btn-info" ShowSelectButton="True" />
             </Columns>
         </asp:GridView>
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
     </form>
-</body>
-</html>
+</asp:Content>
