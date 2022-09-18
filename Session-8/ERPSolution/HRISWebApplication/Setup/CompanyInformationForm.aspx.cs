@@ -46,6 +46,7 @@ namespace HRISWebApplication.Setup
         {
             txtCompanyID.Enabled = true;
             ClearAllFormControl();
+            btnSave.Text = "Save";
         }
         
         private void ShowCompanyInformation()

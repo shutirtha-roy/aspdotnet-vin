@@ -87,7 +87,7 @@ namespace HRISWebApplication.Setup
             LoadOfficeLocationId();
         }
 
-        protected void ddlOfficeLocation_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlCompanyOfficeLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
             OfficeLocationId = ddlCompanyOfficeLocation.SelectedValue;
         }
@@ -121,8 +121,8 @@ namespace HRISWebApplication.Setup
         {
             IDictionary<string, string> companyDepartment = new Dictionary<string, string>()
             {
-                { "companyId", CompanyId.ToString() },
-                { "locationId",  OfficeLocationId.ToString() },
+                { "companyId", ddlCompanyDivision.SelectedValue },
+                { "locationId",  ddlCompanyOfficeLocation.SelectedValue },
                 { "departmentCode", txtDepartmentCode.Text },
                 { "departmentName", txtDepartmentName.Text },
                 { "departmentLocation", txtDepartmentLocation.Text },
@@ -137,8 +137,8 @@ namespace HRISWebApplication.Setup
         {
             IDictionary<string, string> companyDepartment = new Dictionary<string, string>()
             {
-                { "companyId", CompanyId.ToString() },
-                { "locationId",  OfficeLocationId.ToString() },
+                { "companyId", ddlCompanyDivision.SelectedValue },
+                { "locationId",  ddlCompanyOfficeLocation.SelectedValue },
                 { "departmentCode", txtDepartmentCode.Text },
                 { "departmentName", txtDepartmentName.Text },
                 { "departmentLocation", txtDepartmentLocation.Text },
@@ -182,6 +182,7 @@ namespace HRISWebApplication.Setup
                 ddlCompanyDivision.SelectedValue = GridCompanyDepartment.Rows[index].Cells[2].Text.Equals("&nbsp;") ? "" : GridCompanyDepartment.Rows[index].Cells[2].Text;
                 CompanyId = ddlCompanyDivision.SelectedValue;
 
+                LoadOfficeLocationId();
                 ddlCompanyOfficeLocation.SelectedValue = GridCompanyDepartment.Rows[index].Cells[3].Text.Equals("&nbsp;") ? "" : GridCompanyDepartment.Rows[index].Cells[3].Text;
                 OfficeLocationId = ddlCompanyOfficeLocation.SelectedValue;
 

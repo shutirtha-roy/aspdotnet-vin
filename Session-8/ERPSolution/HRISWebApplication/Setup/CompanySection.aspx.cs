@@ -225,9 +225,11 @@ namespace HRISWebApplication.Setup
                 ddlCompanyDivision.SelectedValue = GridCompanySection.Rows[index].Cells[2].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[2].Text;
                 CompanyId = ddlCompanyDivision.SelectedValue;
 
+                LoadOfficeLocationId();
                 ddlCompanyOfficeLocation.SelectedValue = GridCompanySection.Rows[index].Cells[3].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[3].Text;
                 OfficeLocationId = ddlCompanyOfficeLocation.SelectedValue;
 
+                LoadCompanyDepartmentId();
                 ddlCompanyDepartmentCode.SelectedValue = GridCompanySection.Rows[index].Cells[4].Text.Equals("&nbsp;") ? "" : GridCompanySection.Rows[index].Cells[4].Text;
                 CompanyDepartmentId = ddlCompanyDepartmentCode.SelectedValue;
 

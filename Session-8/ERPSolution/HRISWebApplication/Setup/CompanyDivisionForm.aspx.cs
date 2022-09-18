@@ -11,7 +11,7 @@ namespace HRISWebApplication.Setup
 {
     public partial class CompanyDivisionForm : System.Web.UI.Page
     {
-        public static string CompanyId { get; set; }
+        public static string CompanyId { get; set; } = "-1";
         private readonly CompanyDivisionDataAccess _companyDivisonDataAccess;
         private readonly CompanyDataAccess _companyDataAccess;
         public CompanyDivisionForm()
@@ -83,6 +83,7 @@ namespace HRISWebApplication.Setup
         {
             txtLocationCode.Enabled = true;
             ClearAllFormControl();
+            btnSave.Text = "Save";
         }
 
         protected void GridCompanyDivision_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -97,8 +98,12 @@ namespace HRISWebApplication.Setup
             }
             else if (e.CommandName.Equals("Select"))
             {
-                ddlCompanyDivision.SelectedValue = GridCompanyDivision.Rows[index].Cells[2].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[2].Text;
+                LoadCompanyId();
+
+                if (ddlCompanyDivision.Items.FindByValue(GridCompanyDivision.Rows[index].Cells[2].Text.ToString().Trim()) != null)
+                    ddlCompanyDivision.SelectedValue = GridCompanyDivision.Rows[index].Cells[2].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[2].Text;
                 CompanyId = ddlCompanyDivision.SelectedValue;
+
                 txtLocationCode.Text = GridCompanyDivision.Rows[index].Cells[3].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[3].Text;
                 txtLocationName.Text = GridCompanyDivision.Rows[index].Cells[4].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[4].Text;
                 txtLocation.Text = GridCompanyDivision.Rows[index].Cells[5].Text.Equals("&nbsp;") ? "" : GridCompanyDivision.Rows[index].Cells[5].Text;

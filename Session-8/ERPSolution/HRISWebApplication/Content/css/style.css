@@ -48,6 +48,10 @@ th {
     font-size: 1.5vh !important;
 }
 
+.table th {
+    padding-top: 0.3vh !important;
+}
+
 .btn-danger, .btn-info {
     margin: 0 !important;
     padding: 0.25vh !important;

@@ -40,6 +40,11 @@ namespace HRISWebApplication.DataAccess
                 string primaryKeyExceptionMessage = "Empty Primary Key entered";
                 HttpContext.Current.Response.Write($"<script>alert('{primaryKeyExceptionMessage}')</script>");
             }
+            else if(companyDetails["companyName"] == "")
+            {
+                string primaryKeyExceptionMessage = "Empty Company Name entered";
+                HttpContext.Current.Response.Write($"<script>alert('{primaryKeyExceptionMessage}')</script>");
+            }
             else
             {
                 string sqlQuery = $"INSERT INTO [dbo].[Hrms_Company_Master] " +

@@ -67,9 +67,7 @@ namespace HRISWebApplication.DataAccess
         public void Update(IDictionary<string, string> companySection)
         {
             _conn.Open();
-            string sqlQuery = $@"UPDATE [dbo].[Hrms_Company_Section_Master] Set CompanyId = '{companySection["companyId"]}',
-                               OfficeLocationId = '{companySection["locationId"]}', DepartmentCode = '{companySection["departmentCode"]}',
-                               SectionName = '{companySection["sectionName"]}', HeadOfSection = '{companySection["headOfSection"]}',
+            string sqlQuery = $@"UPDATE [dbo].[Hrms_Company_Section_Master] Set SectionName = '{companySection["sectionName"]}', HeadOfSection = '{companySection["headOfSection"]}',
                                SubstituteHeadOfSection = '{companySection["substituteHeadOfSection"]}' WHERE SectionCode = '{companySection["sectionCode"]}'";
 
             SqlCommand command = new SqlCommand(sqlQuery, _conn);
