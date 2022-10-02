@@ -95,7 +95,7 @@ namespace HRISWebApplication.Setup
                 ddlCompanyDepartmentCode.Items.Insert(0, new ListItem("--- Please Select ---", "-1"));
                 foreach (DataRow dr in dt.Rows)
                 {
-                    if (dr["CompanyId"].ToString() == CompanyId)
+                    if (dr["OfficeLocationId"].ToString() == OfficeLocationId)
                     { 
                         ListItem lst = new ListItem();
                         lst.Text = dr["DepartmentName"].ToString();
