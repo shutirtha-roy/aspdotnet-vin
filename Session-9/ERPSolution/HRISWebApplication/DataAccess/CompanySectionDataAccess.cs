@@ -33,7 +33,17 @@ namespace HRISWebApplication.DataAccess
             _conn.Open();
             string sqlQuery = $"DELETE FROM [dbo].[Hrms_Company_Section_Master] WHERE SectionCode='{sectionCode}'";
             SqlCommand command = new SqlCommand(sqlQuery, _conn);
-            command.ExecuteNonQuery();
+
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string cascadingExceptionMessage = "Error in deleting due Cascading Relationship";
+                HttpContext.Current.Response.Write($"<script>alert('{cascadingExceptionMessage}')</script>");
+            }
+
             _conn.Close();
         }
 

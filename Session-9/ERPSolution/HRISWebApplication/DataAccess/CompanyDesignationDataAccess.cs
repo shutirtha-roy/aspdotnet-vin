@@ -31,8 +31,19 @@ namespace HRISWebApplication.DataAccess
         {
             _conn.Open();
             string sqlQuery = $"DELETE FROM [dbo].[Hrms_Company_Designations_Master] WHERE DesignationCode='{designationCode}'";
+
             SqlCommand command = new SqlCommand(sqlQuery, _conn);
-            command.ExecuteNonQuery();
+
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string cascadingExceptionMessage = "Error in deleting due Cascading Relationship";
+                HttpContext.Current.Response.Write($"<script>alert('{cascadingExceptionMessage}')</script>");
+            }
+
             _conn.Close();
         }
 
@@ -93,7 +104,7 @@ namespace HRISWebApplication.DataAccess
         public void Update(IDictionary<string, string> companyDesignation)
         {
             _conn.Open();
-            string sqlQuery = $@"UPDATE [dbo].[Hrms_Company_Section_Master] Set CompanyId = '{companyDesignation["companyId"]}',
+            string sqlQuery = $@"UPDATE [dbo].[Hrms_Company_Designations_Master] Set CompanyId = '{companyDesignation["companyId"]}',
                                OfficeLocationId = '{companyDesignation["locationId"]}', DepartmentCode = '{companyDesignation["departmentCode"]}',
                                SectionCode = '{companyDesignation["sectionCode"]}',  DesignationName = '{companyDesignation["designationName"]}' 
                                WHERE DesignationCode = '{companyDesignation["designationCode"]}'";
