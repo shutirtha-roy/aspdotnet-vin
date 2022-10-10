@@ -36,6 +36,9 @@
                     <li>
 						<a runat="server" href="~/Setup/CompanyDesignation">Company Designation Form</a>
 					</li>
+                    <li>
+						<a runat="server" href="~/Details/EmployeeProfile">Company Profile Form</a>
+					</li>
 				</ul>
 			</div>
     	</nav>
