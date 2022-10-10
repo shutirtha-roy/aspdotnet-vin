@@ -19,7 +19,7 @@
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                             <ContentTemplate>
                                 <asp:Panel ID="Panel1" runat="server">
-                                    <ajaxToolkit:TabContainer ID="TabContainer1" CssClass="MyTabStyle" Width="100%" Height="1200px" runat="server" ActiveTabIndex="4">
+                                    <ajaxToolkit:TabContainer ID="TabContainer1" CssClass="MyTabStyle" Width="100%" Height="600px" runat="server" ActiveTabIndex="4">
                                         <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Basic Information">
                                             <ContentTemplate>
 
@@ -61,8 +61,9 @@
                                                         </div>
                                                     </div>
 
-                                                    
+                                                    <asp:Button CssClass="btn btn-success btn-lg mb-5" ID="btnSave" runat="server" Text="SaveBasicInfo" OnClick="btnSaveBasicInfo_Click" />
                                                     &nbsp;
+                                                    <asp:Button CssClass="btn btn-success btn-lg mb-5" ID="Button2" runat="server" Text="SavePermanently" OnClick="btnSavePermanently_Click" />
                                                 </div>
 
 
@@ -84,6 +85,10 @@
                                                             <asp:TextBox ID="txtEmployeeUniversity" runat="server" CssClass="form-control form-control-lg"></asp:TextBox>
                                                         </div>
                                                     </div>
+
+                                                    <asp:Button CssClass="btn btn-success btn-lg mb-5" ID="Button1" runat="server" Text="SaveEducationInfo" OnClick="btnSaveEducationInfo_Click" />
+                                                    &nbsp;
+                                                    <asp:Button CssClass="btn btn-success btn-lg mb-5" ID="Button4" runat="server" Text="SavePermanently" OnClick="btnSavePermanently_Click" />
                                                 </div>
                                             </ContentTemplate>
                                         </ajaxToolkit:TabPanel>
@@ -108,6 +113,10 @@
                                                             <asp:TextBox ID="txtEmployeeAddress" runat="server" CssClass="form-control form-control-lg"></asp:TextBox>
                                                         </div>
                                                     </div>
+
+                                                    <asp:Button CssClass="btn btn-success btn-lg mb-5" ID="Button3" runat="server" Text="SavePersonalInfo" OnClick="btnSavePersonalInfo_Click" />
+                                                    &nbsp;
+                                                    <asp:Button CssClass="btn btn-success btn-lg mb-5" ID="Button5" runat="server" Text="SavePermanently" OnClick="btnSavePermanently_Click" />
                                                 </div>
                                                 </ContentTemplate>
                                             </ajaxToolkit:TabPanel>
@@ -125,5 +134,17 @@
                 </tr>
             </table>
         </div>
+
+        <asp:GridView ID="GridCompanyEmployeeProfile" class="table text-center table-font company-information mt-5 table-striped table-bordered" runat="server" OnRowCommand="GridCompanyEmployeeProfile_RowCommand" OnRowDeleting="GridCompanyEmployeeProfile_RowDeleting" OnSelectedIndexChanged="GridCompanyEmployeeProfile_SelectedIndexChanged">
+            <Columns>
+                
+            </Columns>
+        </asp:GridView>
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
     </form>
+
+
+    
 </asp:Content>

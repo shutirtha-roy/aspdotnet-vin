@@ -17,6 +17,13 @@ namespace HRISWebApplication.Details
         public static string CompanyDepartmentId { get; set; } = "-1";
         public static string CompanySectionId { get; set; } = "-1";
         public static string CompanyDesignationId { get; set; } = "-1";
+        public static string EmployeeName { get; set; } = "";
+        public static string EmployeeSchool { get; set; } = "";
+        public static string EmployeeUniversity { get; set; } = "";
+        public static string EmployeeFatherName { get; set; } = "";
+        public static string EmployeeMotherName { get; set; } = "";
+        public static string EmployeeAddress { get; set; } = "";
+        private readonly CompanyEmployeeProfileDataAccess _companyEmployeeProfileDataAccess;
         private readonly CompanyDesignationDataAccess _companyDesignationDataAccess;
         private readonly CompanySectionDataAccess _companySectionDataAccess;
         private readonly CompanyDepartmentDataAccess _companyDepartmentDataAccess;
@@ -25,6 +32,7 @@ namespace HRISWebApplication.Details
 
         public EmployeeProfile()
         {
+            _companyEmployeeProfileDataAccess = new CompanyEmployeeProfileDataAccess();
             _companyDesignationDataAccess = new CompanyDesignationDataAccess();
             _companySectionDataAccess = new CompanySectionDataAccess();
             _companyDepartmentDataAccess = new CompanyDepartmentDataAccess();
@@ -41,6 +49,7 @@ namespace HRISWebApplication.Details
                 LoadCompanyDepartmentId();
                 LoadCompanySectionId();
                 LoadCompanyDesignationId();
+                ShowCompanyEmployeeProfile();
             }
         }
 
@@ -199,6 +208,69 @@ namespace HRISWebApplication.Details
         protected void ddlCompanyDesignationCode_SelectedIndexChanged(object sender, EventArgs e)
         {
             CompanyDesignationId = ddlCompanyDesignationCode.SelectedValue;
+        }
+
+        protected void btnSaveBasicInfo_Click(object sender, EventArgs e)
+        {
+            EmployeeName = txtEmployeeName.Text;
+
+            HttpContext.Current.Response.Write($"<script>alert('Employee Name Saved')</script>");
+        }
+
+        protected void btnSaveEducationInfo_Click(object sender, EventArgs e)
+        {
+            EmployeeSchool = txtEmployeeSchool.Text;
+            EmployeeUniversity = txtEmployeeUniversity.Text;
+        }
+
+        protected void btnSavePersonalInfo_Click(object sender, EventArgs e)
+        {
+            EmployeeFatherName = txtEmployeeFatherName.Text;
+            EmployeeMotherName = txtEmployeeMotherName.Text;
+            EmployeeAddress = txtEmployeeAddress.Text;
+        }
+
+        protected void btnSavePermanently_Click(object sender, EventArgs e)
+        {
+            Session[StaticData.UserId] = Guid.NewGuid().ToString();
+
+            IDictionary<string, string> companyEmployeeProfile = new Dictionary<string, string>()
+            {
+                { "companyId", CompanyId.ToString() },
+                { "locationId",  OfficeLocationId.ToString() },
+                { "departmentCode",  CompanyDepartmentId.ToString() },
+                { "sectionCode", CompanySectionId.ToString() },
+                { "designationCode", CompanyDepartmentId.ToString() },
+                { "employeeProfileId", Session[StaticData.UserId].ToString() },
+                { "employeeName", EmployeeName },
+                { "employeeSchool", EmployeeSchool },
+                { "employeeUniversity", EmployeeUniversity },
+                { "employeeFatherName", EmployeeFatherName },
+                { "employeeMotherName", EmployeeMotherName },
+                { "employeeAddress", EmployeeAddress }
+            };
+
+            _companyEmployeeProfileDataAccess.Save(companyEmployeeProfile);
+            Session[StaticData.UserId] = "";
+        }
+
+        private void ShowCompanyEmployeeProfile()
+        {
+            DataTable dt = _companyEmployeeProfileDataAccess.GetAllCompanyEmployeeProfile();
+            GridCompanyEmployeeProfile.DataSource = dt;
+            GridCompanyEmployeeProfile.DataBind();
+        }
+        protected void GridCompanyEmployeeProfile_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
+        protected void GridCompanyEmployeeProfile_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+
+        }
+        protected void GridCompanyEmployeeProfile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

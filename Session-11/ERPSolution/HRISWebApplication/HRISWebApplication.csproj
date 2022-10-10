@@ -192,6 +192,7 @@
     <Compile Include="DataAccess\CompanyDepartmentDataAccess.cs" />
     <Compile Include="DataAccess\CompanyDesignationDataAccess.cs" />
     <Compile Include="DataAccess\CompanyDivisionDataAccess.cs" />
+    <Compile Include="DataAccess\CompanyEmployeeProfileDataAccess.cs" />
     <Compile Include="DataAccess\CompanySectionDataAccess.cs" />
     <Compile Include="DataAccess\DataAccess.cs" />
     <Compile Include="DataAccess\IDataAccess.cs" />
