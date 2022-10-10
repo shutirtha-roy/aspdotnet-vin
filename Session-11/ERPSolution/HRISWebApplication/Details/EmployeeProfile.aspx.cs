@@ -1,4 +1,5 @@
-﻿using HRISWebApplication.DataAccess;
+﻿using HRISWebApplication.Codes;
+using HRISWebApplication.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data;

@@ -70,9 +70,48 @@
                                             </ContentTemplate>
                                         </ajaxToolkit:TabPanel>
                                         <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Education Qualification">
+                                            <ContentTemplate>
+                                                <div class="mx-auto text-center mb-5 mt-5 pt-5" style="width: 620px;">
+                                                    <div class="form-group row">
+                                                        <asp:Label CssClass="col-sm-4 col-form-label col-form-label-lg text-large" ID="Label6" runat="server" Text="Employee School"></asp:Label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox ID="txtEmployeeSchool" runat="server" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <asp:Label CssClass="col-sm-4 col-form-label col-form-label-lg text-large" ID="Label5" runat="server" Text="Employee University"></asp:Label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox ID="txtEmployeeUniversity" runat="server" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
                                         </ajaxToolkit:TabPanel>
                                         <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="Personal Information">
-                                        </ajaxToolkit:TabPanel>
+                                            <ContentTemplate>
+                                                <div class="mx-auto text-center mb-5 mt-5 pt-5" style="width: 620px;">
+                                                    <div class="form-group row">
+                                                        <asp:Label CssClass="col-sm-4 col-form-label col-form-label-lg text-large" ID="Label9" runat="server" Text="Employee Father Name"></asp:Label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox ID="txtEmployeeFatherName" runat="server" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <asp:Label CssClass="col-sm-4 col-form-label col-form-label-lg text-large" ID="Label10" runat="server" Text="Employee Mother Name"></asp:Label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox ID="txtEmployeeMotherName" runat="server" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <asp:Label CssClass="col-sm-4 col-form-label col-form-label-lg text-large" ID="Label11" runat="server" Text="Employee Address"></asp:Label>
+                                                        <div class="col-sm-8">
+                                                            <asp:TextBox ID="txtEmployeeAddress" runat="server" CssClass="form-control form-control-lg"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </ContentTemplate>
+                                            </ajaxToolkit:TabPanel>
+                                        
                                     </ajaxToolkit:TabContainer>
                                 </asp:Panel>
                             </ContentTemplate>
