@@ -252,6 +252,7 @@ namespace HRISWebApplication.Details
 
             _companyEmployeeProfileDataAccess.Save(companyEmployeeProfile);
             Session[StaticData.UserId] = "";
+            ShowCompanyEmployeeProfile();
         }
 
         private void ShowCompanyEmployeeProfile()
@@ -264,11 +265,18 @@ namespace HRISWebApplication.Details
         {
 
         }
+
         protected void GridCompanyEmployeeProfile_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
         }
+
         protected void GridCompanyEmployeeProfile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearAllFormControl()
         {
 
         }

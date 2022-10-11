@@ -17,11 +17,12 @@ namespace HRISWebApplication.DataAccess
         public DataTable GetAllCompanyEmployeeProfile()
         {
             _conn.Open();
-            string sqlQuery = @"SELECT [CompanyId], [OfficeLocationId], [DepartmentCode], [SectionCode], [DesignationCode], 
-                                [EmployeeName], [EmployeeSchool], [EmployeeUniversity], 
-                                [EmployeeFatherName], [EmployeeMotherName], [EmployeeAddress] FROM [dbo].[Hrms_Company_Employee_Profile]";
-            SqlCommand cmd = new SqlCommand(sqlQuery, _conn);
-            SqlDataReader reader = cmd.ExecuteReader();
+
+            string storedProcedureName = "SP_GetAllEmployee";
+            SqlCommand command = new SqlCommand(storedProcedureName, _conn);
+            command.CommandType = CommandType.StoredProcedure;
+
+            SqlDataReader reader = command.ExecuteReader();
             DataTable dataTable = new DataTable();
             dataTable.Load(reader);
             _conn.Close();
@@ -32,17 +33,22 @@ namespace HRISWebApplication.DataAccess
         {
             _conn.Open();
 
-            string sqlQuery = $@"INSERT INTO [dbo].[Hrms_Company_Employee_Profile] 
-                ([CompanyId] ,[OfficeLocationId], [DepartmentCode] ,[SectionCode], [DesignationCode]
-                , [EmployeeProfileId], [EmployeeName],[EmployeeSchool],[EmployeeUniversity],[EmployeeFatherName],[EmployeeMotherName],[EmployeeAddress]) VALUES 
-                ('{companyEmployeeProfile["companyId"]}', '{companyEmployeeProfile["locationId"]}',
-                '{companyEmployeeProfile["departmentCode"]}', '{companyEmployeeProfile["sectionCode"]}',
-                '{companyEmployeeProfile["designationCode"]}', '{companyEmployeeProfile["employeeProfileId"]}', 
-                '{companyEmployeeProfile["employeeName"]}', '{companyEmployeeProfile["employeeSchool"]}'
-                , '{companyEmployeeProfile["employeeUniversity"]}', '{companyEmployeeProfile["employeeFatherName"]}', 
-                '{companyEmployeeProfile["employeeMotherName"]}', '{companyEmployeeProfile["employeeAddress"]}')";
+            string storedProcedureName = "SP_AddEmployers";
+            SqlCommand command = new SqlCommand(storedProcedureName, _conn);
+            command.CommandType = CommandType.StoredProcedure;
 
-            SqlCommand command = new SqlCommand(sqlQuery, _conn);
+            command.Parameters.AddWithValue("@CompanyId", companyEmployeeProfile["companyId"]);
+            command.Parameters.AddWithValue("@OfficeLocationId", companyEmployeeProfile["locationId"]);
+            command.Parameters.AddWithValue("@DepartmentCode", companyEmployeeProfile["departmentCode"]);
+            command.Parameters.AddWithValue("@SectionCode", companyEmployeeProfile["sectionCode"]);
+            command.Parameters.AddWithValue("@DesignationCode", companyEmployeeProfile["designationCode"]);
+            command.Parameters.AddWithValue("@EmployeeProfileId", companyEmployeeProfile["employeeProfileId"]);
+            command.Parameters.AddWithValue("@EmployeeName", companyEmployeeProfile["employeeName"]);
+            command.Parameters.AddWithValue("@EmployeeSchool", companyEmployeeProfile["employeeSchool"]);
+            command.Parameters.AddWithValue("@EmployeeUniversity", companyEmployeeProfile["employeeUniversity"]);
+            command.Parameters.AddWithValue("@EmployeeFatherName", companyEmployeeProfile["employeeFatherName"]);
+            command.Parameters.AddWithValue("@EmployeeMotherName", companyEmployeeProfile["employeeMotherName"]);
+            command.Parameters.AddWithValue("@EmployeeAddress", companyEmployeeProfile["employeeAddress"]);
 
             try
             {
