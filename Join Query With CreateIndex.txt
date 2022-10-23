@@ -1,0 +1,20 @@
+SELECT Hrms_Company_Master.CompanyName, Hrms_Company_Division_Master.OfficeLocationName,
+Hrms_Company_Department_Master.DepartmentName, Hrms_Company_Section_Master.SectionName,
+Hrms_Company_Employee_Profile.EmployeeName, Hrms_Company_Employee_Profile.EmployeeFatherName,
+Hrms_Company_Employee_Profile.EmployeeMotherName
+FROM Hrms_Company_Employee_Profile
+INNER JOIN Hrms_Company_Master
+ON Hrms_Company_Employee_Profile.CompanyId = Hrms_Company_Master.CompanyId
+INNER JOIN Hrms_Company_Division_Master
+ON Hrms_Company_Employee_Profile.OfficeLocationId = Hrms_Company_Division_Master.OfficeLocationCode
+INNER JOIN Hrms_Company_Department_Master
+ON Hrms_Company_Employee_Profile.DepartmentCode = Hrms_Company_Department_Master.DepartmentCode
+INNER JOIN Hrms_Company_Section_Master
+ON Hrms_Company_Employee_Profile.SectionCode = Hrms_Company_Section_Master.SectionCode
+INNER JOIN Hrms_Company_Designations_Master
+ON Hrms_Company_Employee_Profile.DesignationCode = Hrms_Company_Designations_Master.DesignationCode
+
+
+
+CREATE INDEX Hrms_Company_Employee_Profile_Employee_FatherName
+ON [DB_HRIS].[dbo].[Hrms_Company_Employee_Profile]([EmployeeFatherName]);
