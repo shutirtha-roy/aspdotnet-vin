@@ -81,3 +81,8 @@ th {
 .table tr {
     margin: 0;
 }
+
+
+#tblData td, #tblData th {
+    text-align: center;
+}
