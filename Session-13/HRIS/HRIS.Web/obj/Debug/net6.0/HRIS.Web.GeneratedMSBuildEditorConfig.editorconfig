@@ -19,12 +19,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/Development/ASP .NET/Repository/aspdotnet-vin/Session-13/HRIS/HRIS.Web/Views/EmployeeLeave/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVMZWF2ZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Development/ASP .NET/Repository/aspdotnet-vin/Session-13/HRIS/HRIS.Web/Views/EmployeeLeave/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVMZWF2ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/Development/ASP .NET/Repository/aspdotnet-vin/Session-13/HRIS/HRIS.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Development/ASP .NET/Repository/aspdotnet-vin/Session-13/HRIS/HRIS.Web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Development/ASP .NET/Repository/aspdotnet-vin/Session-13/HRIS/HRIS.Web/Views/LeaveType/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGVhdmVUeXBlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Development/ASP .NET/Repository/aspdotnet-vin/Session-13/HRIS/HRIS.Web/Views/Shared/Error.cshtml]

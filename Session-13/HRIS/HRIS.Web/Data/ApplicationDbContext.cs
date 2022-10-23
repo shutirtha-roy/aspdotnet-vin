@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using HRIS.Web.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRIS.Web.Data
@@ -9,5 +10,7 @@ namespace HRIS.Web.Data
             : base(options)
         {
         }
+
+        public DbSet<LeaveTypeModel> LeaveTypes { get; set; }
     }
 }

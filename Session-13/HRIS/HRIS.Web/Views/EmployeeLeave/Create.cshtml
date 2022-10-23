@@ -1,0 +1,26 @@
+﻿@model EmployeeLeaveModel
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="text-center">
+    <h1 class="form-title"> Add Employee Leave</h1>
+</div>
+
+<form class="mt-5 mt-5" runat="server">
+    <div class="mx-auto text-center mb-5" style="width: 620px;">
+        <div class="form-group row">
+            <label asp-for="LeaveDate"></label>
+            <input type="text" class="form-control" asp-for="LeaveDate" class="form-control" />
+            <span asp-validation-for="LeaveDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Remarks"></label>
+            <input type="text" asp-for="Remarks" class="form-control" />
+            <span asp-validation-for="Remarks" class="text-danger"></span>
+        </div>
+    </div>>
+</form>

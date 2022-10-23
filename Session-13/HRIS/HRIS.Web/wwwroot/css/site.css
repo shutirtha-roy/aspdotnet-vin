@@ -81,24 +81,3 @@ th {
 .table tr {
     margin: 0;
 }
-
-
-
-/*TAB CSS*/
-#__tab_MainContent_TabContainer1_TabPanel1 {
-    padding: 20px;
-    font-size: 18px;
-    color: black;
-}
-
-#__tab_MainContent_TabContainer1_TabPanel2 {
-    padding: 20px;
-    font-size: 18px;
-    color: black;
-}
-
-#__tab_MainContent_TabContainer1_TabPanel3 {
-    padding: 20px;
-    font-size: 18px;
-    color: black;
-}
