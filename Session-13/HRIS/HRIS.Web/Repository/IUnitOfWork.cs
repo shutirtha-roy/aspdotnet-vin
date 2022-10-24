@@ -3,6 +3,7 @@
     public interface IUnitOfWork
     {
         ILeaveTypeRepository LeaveType { get; }
+        IEmployeeLeaveRepository EmployeeLeave { get; }
         void Save();
     }
 }

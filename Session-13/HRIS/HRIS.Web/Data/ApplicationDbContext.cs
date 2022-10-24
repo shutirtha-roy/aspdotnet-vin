@@ -12,5 +12,6 @@ namespace HRIS.Web.Data
         }
 
         public DbSet<LeaveTypeModel> LeaveTypes { get; set; }
+        public DbSet<EmployeeLeaveModel> EmployeeLeaves { get; set; }
     }
 }

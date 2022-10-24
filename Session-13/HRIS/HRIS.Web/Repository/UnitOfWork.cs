@@ -7,11 +7,13 @@ namespace HRIS.Web.Repository
         private ApplicationDbContext _db;
 
         public ILeaveTypeRepository LeaveType { get; private set; }
+        public IEmployeeLeaveRepository EmployeeLeave { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             LeaveType = new LeaveTypeRepository(_db);
+            EmployeeLeave = new EmployeeLeaveRepository(_db);
         }
 
         public void Save()

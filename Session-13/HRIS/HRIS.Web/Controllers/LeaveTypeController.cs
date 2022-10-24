@@ -43,5 +43,12 @@ namespace HRIS.Web.Controllers
             IEnumerable<LeaveTypeModel> objCoverTypeList = _unitOfWork.LeaveType.GetAll();
             return Json(new { data = objCoverTypeList });
         }
+
+        [HttpGet]
+        public ActionResult GetData()
+        {
+            var data = from value in _unitOfWork.LeaveType.GetAll() select new { value.Id, value.Title };
+            return Json(data.ToList());
+        }
     }
 }
