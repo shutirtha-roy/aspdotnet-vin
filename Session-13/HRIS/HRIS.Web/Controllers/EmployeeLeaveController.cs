@@ -38,5 +38,13 @@ namespace HRIS.Web.Controllers
 
             return View(obj);
         }
+
+
+        [HttpGet]
+        public ActionResult GetAll()
+        {
+            IEnumerable<EmployeeLeaveModel> objEmployeeLeaveList = _unitOfWork.EmployeeLeave.GetAll();
+            return Json(new { data = objEmployeeLeaveList });
+        }
     }
 }

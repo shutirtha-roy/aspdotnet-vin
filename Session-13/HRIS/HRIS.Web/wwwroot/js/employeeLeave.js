@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿var dataTable;
+
+$(document).ready(function () {
     $.ajax({
         type: "GET",
         url: "/LeaveType/GetData",
@@ -11,12 +13,27 @@
             $('#LeaveTypeDropdown').html(s);
         }
     });
+
+    loadEmployeeLeaveDataTable();
 });
 
 function getValue() {
     var myVal = $("#LeaveTypeDropdown").val();
     $("#showLeaveType").val(myVal);
 }
+
+function loadEmployeeLeaveDataTable() {
+    dataTable = $('#tblEmployeeLeaveData').DataTable({
+        "ajax": {
+            "url": "/EmployeeLeave/GetAll"
+        },
+        "columns": [
+            { "data": "leaveDate", "width": "50%" },
+            { "data": "remarks", "width": "50%" }
+        ]
+    });
+}
+
 
 
 

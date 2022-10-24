@@ -83,6 +83,6 @@ th {
 }
 
 
-#tblData td, #tblData th {
+#tblData td, #tblData th, #tblEmployeeLeaveData td, tblEmployeeLeaveData th {
     text-align: center;
 }
