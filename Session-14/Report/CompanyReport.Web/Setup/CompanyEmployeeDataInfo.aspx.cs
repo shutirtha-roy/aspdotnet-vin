@@ -18,6 +18,7 @@ namespace CompanyReport.Web.Setup
             CrystalReportViewer1.ReportSource = Report;
             CrystalReportViewer1.RefreshReport();
             Report.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"D:\Report\EmployeeReport.pdf");
+            Report.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.WordForWindows, @"D:\Report\EmployeeReport.doc");
         }
     }
 }
