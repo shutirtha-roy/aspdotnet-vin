@@ -1,4 +1,5 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,12 @@ namespace CompanyReport.Web.Setup
         {
             ReportDocument Report = new ReportDocument();
             Report.Load(Server.MapPath("~/CompanyReport.rpt"));
+            Report.SetDatabaseLogon("aspnetb7", "123456", "DESKTOP-OLO1A1A\\SQLEXPRESS", "DB_HRIS");
             CrystalReportViewer1.ReportSource = Report;
-            CrystalReportViewer1.RefreshReport();
-            Report.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"D:\Report\CompanyReport.pdf");
-            Report.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.WordForWindows, @"D:\Report\CompanyReport.doc");
+            //CrystalReportViewer1.ReportSource = Report;
+            Report.ExportToHttpResponse(ExportFormatType.PortableDocFormat, Response, false, "Company Information");
+            //Report.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"D:\Report\CompanyReport.pdf");
+            //Report.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.WordForWindows, @"D:\Report\CompanyReport.doc");
         }
     }
 }
