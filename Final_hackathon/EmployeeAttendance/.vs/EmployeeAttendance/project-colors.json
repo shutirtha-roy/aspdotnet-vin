@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3defc31c-b664-4fdb-9c5a-10b294b088ab": {
+      "ProjectGuid": "3defc31c-b664-4fdb-9c5a-10b294b088ab",
+      "DisplayName": "EmployeeAttendance.Web",
+      "ColorIndex": 0
+    },
+    "189f60bd-dfb3-44f7-a4d7-34f9411a991e": {
+      "ProjectGuid": "189f60bd-dfb3-44f7-a4d7-34f9411a991e",
+      "DisplayName": "EmployeeAttendance.Infrastructure",
+      "ColorIndex": 1
+    },
+    "024114c4-7d32-44a3-b199-3eff7af20490": {
+      "ProjectGuid": "024114c4-7d32-44a3-b199-3eff7af20490",
+      "DisplayName": "EmployeeAttendance.WebForm",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}
