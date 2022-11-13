@@ -28,7 +28,6 @@ namespace EmployeeAttendance.Web.Areas.Admin.Controllers
             AttendanceViewModel attendanceVM = _scope.Resolve<AttendanceViewModel>();
             attendanceVM.Attendance = _scope.Resolve<AttendanceCreateModel>();
             attendanceVM.EmployeeList = GetSelectedEmployeeProfileData();
-
             return View(attendanceVM);
         }
 
@@ -39,13 +38,26 @@ namespace EmployeeAttendance.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _logger.LogInformation("Model State is valid during creating of attendance");
-
                 obj.Attendance.ResolveDependency(_scope);
-                obj.Attendance.CreateAttendance();
-                return RedirectToAction("Create");
 
+                try
+                {
+                    obj.Attendance.CreateAttendance();
+                    TempData["success"] = "Attendance added successfully";
+                    return RedirectToAction("Create");
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, ex.Message);
+                    TempData["error"] = "Attendance didn't create successfully";
+                }
+            }
+            else
+            {
+                TempData["error"] = "Attendance failed, due to incorrect inputs";
             }
 
+            
             return View(obj);
         }
 
